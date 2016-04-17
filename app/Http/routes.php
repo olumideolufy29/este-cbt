@@ -12,5 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
+});
+
+Route::get('/DashboardSiswa', function () {
+    return view('DashboardSiswa');
 });
