@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Eoola;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -12,7 +12,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'role',
     ];
 
     /**
@@ -23,4 +23,19 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function tests()
+    {
+        return $this->hasMany('Eoola\Test', 'user_id', 'id');
+    }
+
+    public function answers()
+    {
+        return $this->hasMany('Eoola\Answer', 'user_id','id');
+    }
+
+    public function results()
+    {
+        return $this->hasMany('Eoola\Result', 'user_id','id');
+    }
 }

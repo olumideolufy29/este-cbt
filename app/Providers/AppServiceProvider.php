@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Eoola\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
