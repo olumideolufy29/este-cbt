@@ -151,10 +151,10 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        Eoola\Providers\AppServiceProvider::class,
+        Eoola\Providers\AuthServiceProvider::class,
+        Eoola\Providers\EventServiceProvider::class,
+        Eoola\Providers\RouteServiceProvider::class,
 
     ],
 

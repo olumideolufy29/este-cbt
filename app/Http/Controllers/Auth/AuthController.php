@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace Eoola\Http\Controllers\Auth;
 
-use App\User;
+use Eoola\User;
 use Validator;
-use App\Http\Controllers\Controller;
+use Eoola\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
