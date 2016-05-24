@@ -52,7 +52,10 @@ Route::get('login', 'Auth\AuthController@showLoginForm');
 Route::post('login', 'Auth\AuthController@login');
 Route::get('logout', 'Auth\AuthController@logout');
 
-Route::get('password')
+Route::get('password/change', function () {
+    return view('changePassword');
+});
+
 /*
 // Registration Routes...
 Route::get('register', 'Auth\AuthController@showRegistrationForm');
