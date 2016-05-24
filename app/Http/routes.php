@@ -23,13 +23,17 @@ Route::group(['middleware' => 'auth'], function () {
      */
     Route::group(['prefix' => 'teacher', 'middleware' => 'teacher'], function () {
         Route::get('/','TeacherController@index');
-        Route::get('result/{id}','TeacherController@result')
+        Route::get('result/{id}','TeacherController@result');
     });
 
 });
 
 Route::get('/', function () {
     return view('login');
+});
+
+Route::get('ssss', function () {
+    return view('DashboardGuru');
 });
 
 /**

@@ -115,21 +115,21 @@
     
     <div class="form-group">
         <label class="col-xs-3 control-label">Kode Test</label>
-        <div class="col-xs-5">
+        <div class="col-xs-7">
             <input type="text" class="form-control" name="name" placeholder="Kode Test Random" required />
         </div>
     </div>
     
     <div class="form-group">
         <label class="col-xs-3 control-label">Nama Test</label>
-        <div class="col-xs-5">
+        <div class="col-xs-7">
             <input type="text" class="form-control" name="name" placeholder="Masukkan Nama Test" required />
         </div>
     </div>
 
     <div class="form-group">
         <label class="col-xs-3 control-label">Mata Pelajaran</label>
-        <div class="col-xs-5 selectContainer">
+        <div class="col-xs-7 selectContainer">
             <select class="form-control" name="size">
                 <option value="">Pilih Mata Pelajaran</option>
                 <option value="s">Small (S)</option>
@@ -142,7 +142,7 @@
 
     <div class="form-group">
         <label class="col-xs-3 control-label">Tipe Test</label>
-        <div class="col-xs-5 selectContainer">
+        <div class="col-xs-7 selectContainer">
             <select class="form-control" name="color">
                 <option value="">Pilih Tipe Test</option>
                 <option value="Essay">Essay</option>
@@ -154,7 +154,7 @@
 
     <div class="form-group">
         <label class="col-xs-3 control-label">Durasi</label>
-        <div class="col-xs-5 selectContainer">
+        <div class="col-xs-7 selectContainer">
             <select class="form-control" name="color">
                 <option value="">Durasi Test</option>
                 <option value="30">30 Menit</option>
@@ -166,7 +166,7 @@
     </div>
 
     <div class="form-group">
-        <div class="col-xs-5 col-xs-offset-3">
+        <div class="col-xs-7 col-xs-offset-3">
             <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">BUAT</button>
         </div>
     </div>
