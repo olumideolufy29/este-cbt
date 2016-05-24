@@ -1,25 +1,20 @@
 <!DOCTYPE html>
   <html>
   <head>
-  	<link href="css/styles.css" rel="stylesheet" type="text/css">
 
     <title>Computer Based Test</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, maximum-scale=1">
 
-    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
-    <link href="css/login.css" rel="stylesheet" type="text/css">
-    <!-- <link href="css/style2.css" rel="stylesheet" type="text/css"> -->
-    <!-- <link href="css/font-awesome.css" rel="stylesheet" type="text/css"> -->
-    <!-- <link href="css/responsive.css" rel="stylesheet" type="text/css"> -->
-    <!-- <link href="css/animate.css" rel="stylesheet" type="text/css"> -->
+    <link rel="stylesheet" href="{{ URL::asset('assets/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('assets/css/login.css') }}">
 
   </head>
 
 <body>
 	
   <div class="image">
-     <center> <img src="img/welcome.png"></center>
+     <center> <img src="{{ URL::asset('assets/image/welcome.png') }}"></center>
   </div>
 
 	<div id="login">

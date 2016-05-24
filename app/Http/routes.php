@@ -30,11 +30,6 @@ Route::group(['middleware' => 'auth'], function () {
         });
     });
 
-    Route::get('/DashboardSiswa', function () {
-        return view('DashboardSiswa');
-    });
-
-
 });
 
 Route::get('/', function () {

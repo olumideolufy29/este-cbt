@@ -1,0 +1,79 @@
+.image{
+   margin: auto;
+}
+
+/*dialog login box*/
+body{
+    background-color: #f4794e;
+    margin-left:0;
+    padding: 0;
+}
+#login{
+    max-width: 270px;
+    margin: auto;
+    /*background: #f9f9f9;*/
+    /*box-shadow: 0 0 10px #aaa;*/
+}
+#login h3{
+    text-align: center;
+    padding: 10px 10px;
+    background-color: #2b2f3e;
+    color: #b0b0bc;
+}
+
+.loginbtn{
+  width: 100%;
+  height: 50px;
+  background-color: #353B47;
+  border-radius: 5px;
+  margin-top: 1em;
+  color: #fff;
+  font-style: roboto;
+}
+
+.loginbtn:hover{
+  background-color: #323945;
+  color: #fff;
+}
+
+fieldset{
+    margin: 0;
+    border: none;
+}
+form{
+    padding: 0;
+    margin: 0;
+    padding: 5px;
+}
+input[type='text'],
+input[type="password"]{
+    border-radius: 5px;
+    border: 2px solid #fff;
+    width: 100%;
+    padding: 1em;
+    margin-top: 0.5em;
+    color: #000;
+}
+a [href="index.html"]{
+    width: 98%;
+    padding: 1em;
+    margin: 1.5em 0;
+    color: #888;
+    background-color:#00cdb1 ;
+    border:none;
+    color:#eee;
+    border-bottom: 4px solid transparent;
+}
+input[href="index.html"]:hover{
+    opacity: 0.8;
+    border-color: #00adb1;
+}
+
+
+.row{
+    margin-top: 50px;
+}
+
+.profil{
+    color: white;
+}
