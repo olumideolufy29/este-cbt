@@ -187,17 +187,17 @@
                                             <div class="form-group" id="soal1">
                                                 <div class="radio">
                                                     <label>
-                                                        <input name="sample1" value="option1" type="radio"> <img src="{{ URL::asset('exams/img/ujian.png') }}" height="100" alt="">
+                                                        <input name="sample0" value="option1" type="radio"> <img src="{{ URL::asset('exams/img/ujian.png') }}" height="100" alt="">
                                                     </label>
                                                 </div>
                                                 <div class="radio">
                                                     <label>
-                                                        <input name="sample1" value="option1" type="radio"> <img src="{{ URL::asset('exams/img/ujian.png') }}" alt="" height="100">
+                                                        <input name="sample0" value="option1" type="radio"> <img src="{{ URL::asset('exams/img/ujian.png') }}" alt="" height="100">
                                                     </label>
                                                 </div>
                                                 <div class="radio">
                                                     <label>
-                                                        <input name="sample1" value="option1" type="radio"> Only when plugged in
+                                                        <input name="sample0" value="option1" type="radio"> Only when plugged in
                                                     </label>
                                                 </div>
                                             </div>
@@ -232,17 +232,17 @@
                                             <div class="form-group" id="soal3">
                                                 <div class="radio">
                                                     <label>
-                                                        <input name="sample1" value="s2" type="radio"> <img src="{{ URL::asset('exams/img/ujian.png') }}" height="100" alt="">
+                                                        <input name="sample2" value="s2" type="radio"> <img src="{{ URL::asset('exams/img/ujian.png') }}" height="100" alt="">
                                                     </label>
                                                 </div>
                                                 <div class="radio">
                                                     <label>
-                                                        <input name="sample1" value="s2" type="radio"> <img src="{{ URL::asset('exams/img/ujian.png') }}" alt="" height="100">
+                                                        <input name="sample2" value="s2" type="radio"> <img src="{{ URL::asset('exams/img/ujian.png') }}" alt="" height="100">
                                                     </label>
                                                 </div>
                                                 <div class="radio">
                                                     <label>
-                                                        <input name="sample1" value="s2" type="radio"> Only when plugged in
+                                                        <input name="sample2" value="s2" type="radio"> Only when plugged in
                                                     </label>
                                                 </div>
                                             </div>
@@ -329,6 +329,19 @@
 
         var updateSoal = function() {
             currentSoal = flkty.selectedIndex + 1;
+            beforeSoal = flkty.selectedIndex;
+
+            if (beforeSoal != 0) {            
+                console.log(beforeSoal);
+                $("#soal"+beforeSoal).each(function(){             
+                  var radio_val = $(this).find('input[type="radio"]:checked');     
+                  if($(this).find('input[type="radio"]:checked').length > 0){
+                    console.log(radio_val);
+                    $('#navigasi-soal a:nth-child(' + beforeSoal + ')').addClass('done');
+                  }
+                });
+            }
+
 
             $('#id_current').html(currentSoal /*+ "<small>/" + jmlSoal + "</small>"*/);
             $('#navigasi-soal a').removeClass('selected');
@@ -338,7 +351,7 @@
             $("#soal"+currentSoal).each(function(){             
               var radio_val = $(this).find('input[type="radio"]:checked');     
               if($(this).find('input[type="radio"]:checked').length > 0){
-                console.log(radio_val);
+                //console.log(radio_val);
                 $('#navigasi-soal a:nth-child(' + currentSoal + ')').addClass('done');
               }
             });
