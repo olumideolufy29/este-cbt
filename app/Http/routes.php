@@ -26,19 +26,18 @@ Route::group(['middleware' => 'auth'], function () {
      */
     Route::group(['prefix' => 'teacher', 'middleware' => 'teacher'], function () {
         Route::any('/', function () {
-            return "Login As Teacher";
+            return view('DashboardGuru');
         });
     });
-
-    Route::get('/DashboardSiswa', function () {
-        return view('DashboardSiswa');
-    });
-
 
 });
 
 Route::get('/', function () {
     return view('login');
+});
+
+Route::get('/ujian', function () {
+    return view('ujian');
 });
 
 /**
@@ -47,6 +46,11 @@ Route::get('/', function () {
 Route::get('login', 'Auth\AuthController@showLoginForm');
 Route::post('login', 'Auth\AuthController@login');
 Route::get('logout', 'Auth\AuthController@logout');
+
+Route::get('password/change', function () {
+    return view('changePassword');
+});
+
 /*
 // Registration Routes...
 Route::get('register', 'Auth\AuthController@showRegistrationForm');
