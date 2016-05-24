@@ -26,7 +26,7 @@ Route::group(['middleware' => 'auth'], function () {
      */
     Route::group(['prefix' => 'teacher', 'middleware' => 'teacher'], function () {
         Route::any('/', function () {
-            return "Login As Teacher";
+            return view('DashboardGuru');
         });
     });
 
@@ -39,6 +39,10 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::get('/', function () {
     return view('login');
+});
+
+Route::get('/test', function () {
+    return view('DashboardSiswa');
 });
 
 /**
