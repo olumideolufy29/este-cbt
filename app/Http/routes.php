@@ -7,14 +7,14 @@ Route::group(['middleware' => 'auth'], function () {
      * ADMIN
      */
     Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
-        Route::get('/','AdminController@index')
+        Route::get('/','AdminController@index');
     });
 
     /**
      * STUDENT
      */
     Route::group(['prefix' => 'student', 'middleware' => 'student'], function () {
-        Route::get('/','StudentController@index')
+        Route::get('/','StudentController@index');
         Route::get('/ujian/{id}','StudentController@ujian');
     });
 
@@ -22,7 +22,8 @@ Route::group(['middleware' => 'auth'], function () {
      * TEACHER
      */
     Route::group(['prefix' => 'teacher', 'middleware' => 'teacher'], function () {
-        Route::get('/','TeacherController@index')
+        Route::get('/','TeacherController@index');
+        Route::get('result/{id}','TeacherController@result')
     });
 
 });
@@ -30,7 +31,6 @@ Route::group(['middleware' => 'auth'], function () {
 Route::get('/', function () {
     return view('login');
 });
-
 
 /**
  * Custom Route Auth Instead of using Route::auth()

@@ -12,4 +12,9 @@ class TeacherController extends Controller
     {
       return view('DashboardGuru');
     }
+
+    public function result($id)
+    {
+      return view('ListTest');
+    }
 }
