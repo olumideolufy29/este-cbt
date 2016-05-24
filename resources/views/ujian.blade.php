@@ -158,6 +158,9 @@
                             <a href="#" title="" class="btn btn-fab">
                                     20
                                 </a>
+                            <a href="#" title="" class="btn btn-fab">
+                                    21
+                                </a>
                         </div>
                     </div>
                     <div class="panel-footer">
@@ -181,7 +184,7 @@
                                     <div class="col-sm-12">
                                         <div class="container">
                                             Soal 1
-                                            <div class="form-group">
+                                            <div class="form-group" id="soal1">
                                                 <div class="radio">
                                                     <label>
                                                         <input name="sample1" value="option1" type="radio"> <img src="{{ URL::asset('exams/img/ujian.png') }}" height="100" alt="">
@@ -204,11 +207,45 @@
                                 <div class="soal row">
                                     <div class="col-sm-12">
                                         Soal 2
+                                            <div class="form-group" id="soal2">
+                                                <div class="radio">
+                                                    <label>
+                                                        <input name="sample1" value="s2" type="radio"> <img src="{{ URL::asset('exams/img/ujian.png') }}" height="100" alt="">
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input name="sample1" value="s2" type="radio"> <img src="{{ URL::asset('exams/img/ujian.png') }}" alt="" height="100">
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input name="sample1" value="s2" type="radio"> Only when plugged in
+                                                    </label>
+                                                </div>
+                                            </div>
                                     </div>
                                 </div>
                                 <div class="soal row">
                                     <div class="col-sm-12">
                                         Soal 3
+                                            <div class="form-group" id="soal3">
+                                                <div class="radio">
+                                                    <label>
+                                                        <input name="sample1" value="s2" type="radio"> <img src="{{ URL::asset('exams/img/ujian.png') }}" height="100" alt="">
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input name="sample1" value="s2" type="radio"> <img src="{{ URL::asset('exams/img/ujian.png') }}" alt="" height="100">
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input name="sample1" value="s2" type="radio"> Only when plugged in
+                                                    </label>
+                                                </div>
+                                            </div>
                                     </div>
                                 </div>
                                 <div class="soal row">
@@ -265,6 +302,7 @@
     <script src="{{ URL::asset('exams/js/flickity.pkgd.min.js') }}"></script>
     <script>
     $(document).ready(function() {
+
         $.material.init();
         var $gallery = $('#soal').flickity({
             cellAlign: "center",
@@ -283,15 +321,28 @@
         var currentSoal = flkty.selectedIndex + 1;
         var progress;
 
+        $('#navigasi-soal a:nth-child(1)').removeClass('done');
+
         var selesai = function() {
             
         }
 
         var updateSoal = function() {
             currentSoal = flkty.selectedIndex + 1;
+
             $('#id_current').html(currentSoal /*+ "<small>/" + jmlSoal + "</small>"*/);
             $('#navigasi-soal a').removeClass('selected');
-            $('#navigasi-soal a:nth-child(' + currentSoal + ')').addClass('selected').addClass('done');
+
+            $('#navigasi-soal a:nth-child(' + currentSoal + ')').addClass('selected');
+
+            $("#soal"+currentSoal).each(function(){             
+              var radio_val = $(this).find('input[type="radio"]:checked');     
+              if($(this).find('input[type="radio"]:checked').length > 0){
+                console.log(radio_val);
+                $('#navigasi-soal a:nth-child(' + currentSoal + ')').addClass('done');
+              }
+            });
+
             jmlDone = $('#navigasi-soal .done').length;
             progressPercent = (jmlDone / jmlSoal) * 100;
             if (progressPercent == 100) {
