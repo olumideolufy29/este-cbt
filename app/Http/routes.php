@@ -7,27 +7,22 @@ Route::group(['middleware' => 'auth'], function () {
      * ADMIN
      */
     Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
-        Route::any('/', function () {
-            return "Login As Admin";
-        });
+        Route::get('/','AdminController@index')
     });
 
     /**
      * STUDENT
      */
     Route::group(['prefix' => 'student', 'middleware' => 'student'], function () {
-        Route::any('/', function () {
-            return view('DashboardSiswa');
-        });
+        Route::get('/','StudentController@index')
+        Route::get('/ujian/{id}','StudentController@ujian');
     });
 
     /**
      * TEACHER
      */
     Route::group(['prefix' => 'teacher', 'middleware' => 'teacher'], function () {
-        Route::any('/', function () {
-            return view('DashboardGuru');
-        });
+        Route::get('/','TeacherController@index')
     });
 
 });
@@ -36,9 +31,6 @@ Route::get('/', function () {
     return view('login');
 });
 
-Route::get('/ujian', function () {
-    return view('ujian');
-});
 
 /**
  * Custom Route Auth Instead of using Route::auth()
@@ -47,9 +39,7 @@ Route::get('login', 'Auth\AuthController@showLoginForm');
 Route::post('login', 'Auth\AuthController@login');
 Route::get('logout', 'Auth\AuthController@logout');
 
-Route::get('password/change', function () {
-    return view('changePassword');
-});
+Route::get('password/change','LoginHandlerController@changePass');
 
 /*
 // Registration Routes...
