@@ -327,20 +327,26 @@
             
         }
 
+        var changeDone = function(number) {
+            $("#soal"+number).each(function(){             
+              var radio_val = $(this).find('input[type="radio"]:checked');     
+              if($(this).find('input[type="radio"]:checked').length > 0){
+                console.log(radio_val);
+                $('#navigasi-soal a:nth-child(' + number + ')').addClass('done');
+              }
+            });
+        }
+
         var updateSoal = function() {
             currentSoal = flkty.selectedIndex + 1;
             beforeSoal = flkty.selectedIndex;
+            nextSoal = currentSoal +1;
 
-            if (beforeSoal != 0) {            
-                console.log(beforeSoal);
-                $("#soal"+beforeSoal).each(function(){             
-                  var radio_val = $(this).find('input[type="radio"]:checked');     
-                  if($(this).find('input[type="radio"]:checked').length > 0){
-                    console.log(radio_val);
-                    $('#navigasi-soal a:nth-child(' + beforeSoal + ')').addClass('done');
-                  }
-                });
+            if (beforeSoal != 0) {   
+                changeDone(beforeSoal);
             }
+
+            changeDone(nextSoal);
 
 
             $('#id_current').html(currentSoal /*+ "<small>/" + jmlSoal + "</small>"*/);
@@ -348,13 +354,7 @@
 
             $('#navigasi-soal a:nth-child(' + currentSoal + ')').addClass('selected');
 
-            $("#soal"+currentSoal).each(function(){             
-              var radio_val = $(this).find('input[type="radio"]:checked');     
-              if($(this).find('input[type="radio"]:checked').length > 0){
-                //console.log(radio_val);
-                $('#navigasi-soal a:nth-child(' + currentSoal + ')').addClass('done');
-              }
-            });
+            changeDone(currentSoal);
 
             jmlDone = $('#navigasi-soal .done').length;
             progressPercent = (jmlDone / jmlSoal) * 100;
