@@ -17,7 +17,7 @@ Route::group(['middleware' => 'auth'], function () {
      */
     Route::group(['prefix' => 'student', 'middleware' => 'student'], function () {
         Route::any('/', function () {
-            return "Login As Student";
+            return view('DashboardSiswa');
         });
     });
 

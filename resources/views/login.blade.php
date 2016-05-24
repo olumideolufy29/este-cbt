@@ -13,18 +13,18 @@
 
 <body>
 	
-  <div class="image">
+  <div class="image" id="logo">
      <center> <img src="{{ URL::asset('assets/image/welcome.png') }}"></center>
   </div>
 
 	<div id="login">
           <fieldset>
-              <form action="login">
-                  <input type="text" name="username" placeholder="Nomor Induk">
-                  <input type="password" name="password" placeholder="Password">
+              <form action="" method="POST">
+                  <input type="text" name="username" placeholder="Nomor Induk" required="required">
+                  <input type="password" name="password" placeholder="Password" required="required">
+                  <button class="btn loginbtn" type="submit">MASUK</button>
               </form>
               <!-- <a href="home"> <input type="submit" name="submit"  value="Login"  href="index.html" > </a> -->
-              <button class="btn loginbtn" type="submit">MASUK</button>
            </fieldset>
   </div>
 

@@ -8,12 +8,19 @@ body{
     margin-left:0;
     padding: 0;
 }
+
+
+#logo{
+  margin-top: 3em;
+}
+
 #login{
     max-width: 270px;
     margin: auto;
     /*background: #f9f9f9;*/
     /*box-shadow: 0 0 10px #aaa;*/
 }
+
 #login h3{
     text-align: center;
     padding: 10px 10px;
@@ -32,7 +39,7 @@ body{
 }
 
 .loginbtn:hover{
-  background-color: #323945;
+  background-color: #4E5768;
   color: #fff;
 }
 
