@@ -37,7 +37,7 @@ Route::get('/', function () {
 });
 
 Route::get('/ujian', function () {
-    return view('ujian');
+    return view('dashboardsiswa');
 });
 
 /**

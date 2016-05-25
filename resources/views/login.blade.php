@@ -20,11 +20,11 @@
 	<div id="login">
           <fieldset>
               <form action="login">
-                  <input type="text" name="username" placeholder="Nomor Induk">
-                  <input type="password" name="password" placeholder="Password">
+                <input type="text" name="username" placeholder="Nomor Induk">
+                <input type="password" name="password" placeholder="Password">
+                <button class="btn loginbtn" type="submit">MASUK</button>
               </form>
               <!-- <a href="home"> <input type="submit" name="submit"  value="Login"  href="index.html" > </a> -->
-              <button class="btn loginbtn" type="submit">MASUK</button>
            </fieldset>
   </div>
 
