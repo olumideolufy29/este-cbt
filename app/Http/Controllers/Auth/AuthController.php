@@ -7,6 +7,7 @@ use Validator;
 use Eoola\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Auth;
 
 class AuthController extends Controller
 {
@@ -50,8 +51,9 @@ class AuthController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
+            'no_induk' => 'required|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
+            'role' => 'required|in:admin,teacher,student',
         ]);
     }
 
@@ -65,8 +67,21 @@ class AuthController extends Controller
     {
         return User::create([
             'name' => $data['name'],
-            'email' => $data['email'],
+            'no_induk' => $data['no_induk'],
             'password' => bcrypt($data['password']),
+            'role' => $data['role'],
         ]);
+    }
+
+    public function loginUsername()
+    {
+        return 'no_induk';
+    }
+
+    public function logout()
+    {
+        Auth::guard($this->getGuard())->logout();
+        session()->flush();
+        return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/');
     }
 }

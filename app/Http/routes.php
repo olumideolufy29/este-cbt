@@ -1,8 +1,10 @@
 <?php
-
 Route::get('/', 'LoginHandlerController@handle');
 
+
 Route::group(['middleware' => 'auth'], function () {
+
+    Route::controller('first-login', 'Auth\FirstLoginController');
     /**
      * ADMIN
      */
@@ -32,9 +34,6 @@ Route::group(['middleware' => 'auth'], function () {
 
 });
 
-Route::get('/', function () {
-    return view('login');
-});
 
 Route::get('/ujian', function () {
     return view('dashboardsiswa');
@@ -61,4 +60,3 @@ Route::get('password/reset/{token?}', 'Auth\PasswordController@showResetForm');
 Route::post('password/email', 'Auth\PasswordController@sendResetLinkEmail');
 Route::post('password/reset', 'Auth\PasswordController@reset');
 */
-

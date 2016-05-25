@@ -13,22 +13,22 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         User::create([
-            'name'     => 'Guru',
-            'email'    => 'guru@eoola.com',
+            'name'     => 'Contoh Guru',
+            'no_induk'    => 'guru',
             'role'     => 'teacher',
             'password' => bcrypt('guru123'),
         ]);
 
         User::create([
             'name'     => 'Admin Utama',
-            'email'    => 'admin@eoola.com',
+            'no_induk'    => 'admin',
             'role'     => 'admin',
             'password' => bcrypt('admin123'),
         ]);
 
         User::create([
-            'name'     => 'Siswa Utama',
-            'email'    => 'siswa@eoola.com',
+            'name'     => 'Contoh Siswa',
+            'no_induk'    => 'siswa',
             'role'     => 'student',
             'password' => bcrypt('siswa123'),
         ]);
