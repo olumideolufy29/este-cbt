@@ -55,7 +55,7 @@ class TeacherController extends Controller
         return redirect('/teacher')->withErrors(['msg' => 'kode ujian untuk '.$code.' tidak ditemukan']);
       }
 
-      return view('buatSoal');
+      return view('buatSoal',['type' => $check->type]);
     }
 
 }
