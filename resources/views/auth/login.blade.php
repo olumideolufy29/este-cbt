@@ -7,8 +7,8 @@
         <title>ESTE 2016</title>
 
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="{{url('css/bootstrap.min.css')}}">
-        <link rel="stylesheet" href="{{url('este.css')}}" >
+        <link rel="stylesheet" href="{{url('assets/css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{url('assets/este.css')}}" >
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -22,7 +22,7 @@
    <div class="container">
         <div class="card card-container">
             <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
-            <img id="profile-img" class="profile-img-card" src="{{ url('image/logo.png') }}" />
+            <img id="profile-img" class="profile-img-card" src="{{ url('assets/image/logo.png') }}" />
             <p id="profile-name" class="profile-name-card"></p>
                         <form class="form-signin form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
 
@@ -52,22 +52,10 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-12">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember"> Remember Me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
                             <div class="col-md-12 text-center">
                                 <button type="submit" class="btn btn-lg btn-primary btn-block btn-signin">
                                     <i class="fa fa-btn fa-sign-in"></i>Login
                                 </button>
-
-                                <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
                             </div>
                         </div>
             </form><!-- /form -->
@@ -77,10 +65,9 @@
 
 <p class="text-center" style="color: white">Copyright @2016 Tim Putih</p>
         <!-- jQuery -->
-        <script src="{{url('js/jquery.js')}}"></script>
+        <script src="{{url('assets/js/jquery.js')}}"></script>
         <!-- Bootstrap JavaScript -->
-        <script src="{{url('js/bootstrap.min.js')}}"></script>
+        <script src="{{url('assets/js/bootstrap.min.js')}}"></script>
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <script src="{{url('login.js')}}"></script>
     </body>
 </html>

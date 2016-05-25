@@ -48,6 +48,7 @@ class Kernel extends HttpKernel
         'admin' => \Eoola\Http\Middleware\Admin::class,
         'student' => \Eoola\Http\Middleware\Student::class,
         'teacher' => \Eoola\Http\Middleware\Teacher::class,
+        'first-login' => \Eoola\Http\Middleware\FirstLogin::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'can' => \Illuminate\Foundation\Http\Middleware\Authorize::class,
         'guest' => \Eoola\Http\Middleware\RedirectIfAuthenticated::class,

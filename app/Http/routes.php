@@ -4,7 +4,7 @@ Route::get('/', 'LoginHandlerController@handle');
 
 Route::group(['middleware' => 'auth'], function () {
 
-
+    Route::controller('first-login', 'Auth\FirstLoginController');
     /**
      * ADMIN
      */
@@ -34,9 +34,6 @@ Route::group(['middleware' => 'auth'], function () {
 
 });
 
-Route::get('/', function () {
-    return view('login');
-});
 
 Route::get('/ujian', function () {
     return view('ujian');

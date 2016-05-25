@@ -7,6 +7,7 @@ use Validator;
 use Eoola\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Auth;
 
 class AuthController extends Controller
 {
@@ -75,5 +76,12 @@ class AuthController extends Controller
     public function loginUsername()
     {
         return 'no_induk';
+    }
+
+    public function logout()
+    {
+        Auth::guard($this->getGuard())->logout();
+        session()->flush();
+        return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/');
     }
 }

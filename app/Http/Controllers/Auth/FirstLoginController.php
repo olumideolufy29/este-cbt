@@ -13,8 +13,17 @@ use Auth;
 
 class FirstLoginController extends Controller
 {
+	public function __construct()
+    {
+        $this->middleware('first-login');
+    }
 
-    public function changePassword(Request $request)
+	public function getIndex()
+	{
+		return view('auth.change-password');
+	}
+
+    public function postIndex(Request $request)
     {
     	$validator = Validator::make($request->all(), [
     			'password' => 'required|min:6|confirmed'
@@ -22,11 +31,17 @@ class FirstLoginController extends Controller
 
         if ($validator->fails()) {
             return redirect()->back()
-                ->with('errors', $validator)
+                ->with('errors', $validator);
         }
 
         $user = User::where('id', Auth::user()->id)->update([
         	'password' => bcrypt($request->password),
         	]);
+    }
+
+    public function getSkip()
+    {
+    	session()->set('skip', true);
+    	return redirect('/');
     }
 }
