@@ -31,13 +31,9 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 
-<<<<<<< HEAD
-Route::get('ssss', function () {
-    return view('DashboardGuru');
-=======
-Route::get('/ujian', function () {
+Route::get('/test', function () {
     return view('dashboardsiswa');
->>>>>>> master
+
 });
 
 /**
