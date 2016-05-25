@@ -19,7 +19,7 @@ Route::group(['middleware' => 'auth'], function () {
      */
     Route::group(['prefix' => 'student', 'middleware' => 'student'], function () {
         Route::any('/', function () {
-            return "Login As Student";
+            return view('student.index');
         });
     });
 
@@ -28,7 +28,7 @@ Route::group(['middleware' => 'auth'], function () {
      */
     Route::group(['prefix' => 'teacher', 'middleware' => 'teacher'], function () {
         Route::any('/', function () {
-            return view('DashboardGuru');
+            return view('teacher.index');
         });
     });
 

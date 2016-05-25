@@ -20,7 +20,7 @@
     <body>
         
    <div class="container">
-        <div class="card card-container">
+        <div class="card card-container" style="margin-top:50px">
             <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
             <img id="profile-img" class="profile-img-card" src="{{ url('assets/image/logo.png') }}" />
             <p id="profile-name" class="profile-name-card"></p>

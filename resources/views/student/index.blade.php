@@ -5,9 +5,9 @@ Dashboard Siswa
 @endsection
 
 @section('content')
-menu test
-<div class="text-center" style="margin-top: 75px">
-	<img class="center" src="image/alert.png" width="10%">
+
+<div class="text-center" style="margin-top: 40px">
+	<img class="center" src="{{url('assets/image/alert.png')}}" width="10%">
 </div>
 
 <h3 class="text-center" style="color: #343C47; font-weight: bold;">
@@ -18,9 +18,8 @@ menu test
 </h3>
 
 <div class="card2 card-container">
-	<form class="form-signin">
-		<span id="reauth-email" class="reauth-email"></span>
-				<input type="password" id="inputPassword" class="form-control" placeholder="Kode Test" required>
+	<form class="form-signin" method="post" action="">
+		<input type="password" name="test_code" id="inputPassword" class="form-control" placeholder="Kode Test" required>
 		<button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">MULAI</button>
 	</form><!-- /form -->
 </div><!-- /card-container -->

@@ -60,7 +60,7 @@
 
             </form><!-- /form -->
             <div class="text-center" style="font-weight: bold;">
-                <a target="_blank" href="{{url('first-login/skip')}}" style="color:white">LEWATI</a>
+                <a href="{{url('first-login/skip')}}" style="color:white">LEWATI</a>
             </div>
         </div><!-- /card-container -->
     </div><!-- /container -->
