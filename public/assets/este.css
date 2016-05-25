@@ -5,6 +5,19 @@ body, html {
     background-color: #ff6600;
 }
 
+.navbar{
+    border-radius: 0;
+}
+
+.navbar-default{
+    background: #fff;
+    border:none;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+
+}
+
 .card-container.card {
     max-width: 350px;
     padding: 40px 40px;
@@ -20,7 +33,6 @@ body, html {
     -moz-user-select: none;
     -webkit-user-select: none;
     user-select: none;
-    cursor: default;
 }
 
 /*
@@ -302,231 +314,3 @@ used to vertically center elements, may need modification if you're not using de
   line-height: 34px;
 }
 
-/*----------------------------------------------------*/
-/*----------------- Testimonials CSS -----------------*/
-/*----------------------------------------------------*/
-.testimonial{
-    margin-bottom: 10px;
-}
-
-    .testimonial-desc {
-        margin-top: 20px;
-        text-align:left;
-        padding-left: 15px;
-    }
-        .testimonial-desc img {
-            border: 1px solid #f5f5f5;
-            border-radius: 150px;
-            height: 70px;
-            padding: 3px;
-            width: 70px;
-            display:inline-block;
-            vertical-align: top;
-        }
-
-        .testimonial-writer{
-            display: inline-block;
-            vertical-align: top;
-            padding-left: 10px;
-        }
-
-            .testimonial-writer-name{
-                font-weight: bold;
-            }
-
-            .testimonial-writer-designation{
-                font-size: 85%;
-            }
-
-            .testimonial-writer-company{
-                font-size: 85%;
-            }
-    /*---- Outlined Styles ----*/
-    .testimonial.testimonial-default{
-        
-    }
-        .testimonial.testimonial-default .testimonial-desc{
-            
-        }
-
-            .testimonial.testimonial-default .testimonial-desc img{
-                border-color: #777;
-            }
-
-            .testimonial.testimonial-default .testimonial-writer-name{
-                color: #777;
-            }
-
-    .testimonial.testimonial-primary{
-        
-    }
-        .testimonial.testimonial-primary .testimonial-desc{
-            
-        }
-
-            .testimonial.testimonial-primary .testimonial-desc img{
-                border-color: #337AB7;
-            }
-
-            .testimonial.testimonial-primary .testimonial-writer-name{
-                color: #337AB7;
-            }
-
-    .testimonial.testimonial-info{
-        
-    }
-        .testimonial.testimonial-info .testimonial-desc{
-            
-        }
-
-            .testimonial.testimonial-info .testimonial-desc img{
-                border-color: #5BC0DE;
-            }
-
-            .testimonial.testimonial-info .testimonial-writer-name{
-                color: #5BC0DE;
-            }
-
-
-    .testimonial.testimonial-success{
-        
-    }
-        .testimonial.testimonial-success .testimonial-desc{
-            
-        }
-
-            .testimonial.testimonial-success .testimonial-desc img{
-                border-color: #5CB85C;
-            }
-
-            .testimonial.testimonial-success .testimonial-writer-name{
-                color: #5CB85C;
-            }
-
-    .testimonial.testimonial-warning{
-        
-    }
-        .testimonial.testimonial-warning .testimonial-desc{
-            
-        }
-
-            .testimonial.testimonial-warning .testimonial-desc img{
-                border-color: #F0AD4E;
-            }
-
-            .testimonial.testimonial-warning .testimonial-writer-name{
-                color: #F0AD4E;
-            }
-
-    .testimonial.testimonial-danger{
-        
-    }
-        .testimonial.testimonial-danger .testimonial-desc{
-            
-        }
-
-            .testimonial.testimonial-danger .testimonial-desc img{
-                border-color: #D9534F;
-            }
-
-            .testimonial.testimonial-danger .testimonial-writer-name{
-                color: #D9534F;
-            }
-
-    /*---- Filled Styles ----*/
-    .testimonial.testimonial-default-filled{
-        
-    }
-        .testimonial.testimonial-default-filled .testimonial-desc{
-            
-        }
-
-            .testimonial.testimonial-default-filled .testimonial-desc img{
-                border-color: #777;
-                background-color: #777;
-            }
-
-            .testimonial.testimonial-default-filled .testimonial-writer-name{
-                color: #777;
-            }
-
-    .testimonial.testimonial-primary-filled{
-        
-    }
-        .testimonial.testimonial-primary-filled .testimonial-desc{
-            
-        }
-
-            .testimonial.testimonial-primary-filled .testimonial-desc img{
-                border-color: #2e6da4;
-                background-color: #337ab7;
-            }
-
-            .testimonial.testimonial-primary-filled .testimonial-writer-name{
-                color: #337AB7;
-            }
-
-    .testimonial.testimonial-info-filled{
-        
-    }
-        .testimonial.testimonial-info-filled .testimonial-desc{
-            
-        }
-
-            .testimonial.testimonial-info-filled .testimonial-desc img{
-                border-color: #46b8da;
-                background-color: #5bc0de;
-            }
-
-            .testimonial.testimonial-info-filled .testimonial-writer-name{
-                color: #5BC0DE;
-            }
-
-
-    .testimonial.testimonial-success-filled{
-        
-    }
-        .testimonial.testimonial-success-filled .testimonial-desc{
-            
-        }
-
-            .testimonial.testimonial-success-filled .testimonial-desc img{
-                border-color: #4cae4c;
-                background-color: #5cb85c;
-            }
-
-            .testimonial.testimonial-success-filled .testimonial-writer-name{
-                color: #5CB85C;
-            }
-
-    .testimonial.testimonial-warning-filled{
-        
-    }
-        .testimonial.testimonial-warning-filled .testimonial-desc{
-            
-        }
-
-            .testimonial.testimonial-warning-filled .testimonial-desc img{
-                border-color: #eea236;
-                background-color: #f0ad4e;
-            }
-
-            .testimonial.testimonial-warning-filled .testimonial-writer-name{
-                color: #F0AD4E;
-            }
-
-    .testimonial.testimonial-danger-filled{
-        
-    }
-        .testimonial.testimonial-danger-filled .testimonial-desc{
-            
-        }
-
-            .testimonial.testimonial-danger-filled .testimonial-desc img{
-                border-color: #d43f3a;
-                background-color: #D9534F;
-            }
-
-            .testimonial.testimonial-danger-filled .testimonial-writer-name{
-                color: #D9534F;
-            }
