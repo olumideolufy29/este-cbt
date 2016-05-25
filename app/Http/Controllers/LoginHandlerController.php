@@ -24,7 +24,7 @@ class LoginHandlerController extends Controller
 					break;
 			}
 		} else{
-			return view('welcome');
+			return redirect('login');
 		}
 	}
 }
