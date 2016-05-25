@@ -65,10 +65,10 @@
         <!-- SIDEBAR USER TITLE -->
         <div class="profile-usertitle">
           <div class="profile-usertitle-name">
-            Anissa
+            {{{Auth::user()->name}}}
           </div>
           <div class="profile-usertitle-job">
-            Guru
+            {{{Auth::user()->role}}}
           </div>
         </div>
         <!-- END SIDEBAR USER TITLE -->
@@ -111,66 +111,75 @@
 
     <h1 class="text-center" style="color: #343C47; font-weight: bold;">INFORMASI TEST
     <br><small style="color: #343C47;">(Isikan kolom berikut dengan benar)</small></h1><br>
-        <form id="productForm" method="post" class="form-horizontal">
     
-    <div class="form-group">
-        <label class="col-xs-3 control-label">Kode Test</label>
-        <div class="col-xs-7">
-            <input type="text" class="form-control" name="name" placeholder="Kode Test Random" required />
-        </div>
-    </div>
-    
-    <div class="form-group">
-        <label class="col-xs-3 control-label">Nama Test</label>
-        <div class="col-xs-7">
-            <input type="text" class="form-control" name="name" placeholder="Masukkan Nama Test" required />
-        </div>
-    </div>
+    <form id="productForm" action="teacher/submitexam" method="post" class="form-horizontal">
 
-    <div class="form-group">
-        <label class="col-xs-3 control-label">Mata Pelajaran</label>
-        <div class="col-xs-7 selectContainer">
-            <select class="form-control" name="size">
-                <option value="">Pilih Mata Pelajaran</option>
-                <option value="s">Small (S)</option>
-                <option value="m">Medium (M)</option>
-                <option value="l">Large (L)</option>
-                <option value="xl">Extra large (XL)</option>
-            </select>
-        </div>
-    </div>
 
-    <div class="form-group">
-        <label class="col-xs-3 control-label">Tipe Test</label>
-        <div class="col-xs-7 selectContainer">
-            <select class="form-control" name="color">
-                <option value="">Pilih Tipe Test</option>
-                <option value="Essay">Essay</option>
-                <option value="Obyektif">Obyektif</option>
-                <option value="Isian">Isian Singkat</option>
-            </select>
-        </div>
-    </div>
+        @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
-    <div class="form-group">
-        <label class="col-xs-3 control-label">Durasi</label>
-        <div class="col-xs-7 selectContainer">
-            <select class="form-control" name="color">
-                <option value="">Durasi Test</option>
-                <option value="30">30 Menit</option>
-                <option value="60">60 Menit</option>
-                <option value="90">90 Menit</option>
-                <option value="120">120 Menit</option>
-            </select>
+        {!! csrf_field() !!}
+        <div class="form-group">
+            <label class="col-xs-3 control-label">Kode Test</label>
+            <div class="col-xs-7">
+                <input type="text" class="form-control" name="code_test" placeholder="Kode Test Random" />
+            </div>
         </div>
-    </div>
+        
+        <div class="form-group">
+            <label class="col-xs-3 control-label">Nama Test</label>
+            <div class="col-xs-7">
+                <input type="text" class="form-control" name="name_test" placeholder="Masukkan Nama Test" required />
+            </div>
+        </div>
 
-    <div class="form-group">
-        <div class="col-xs-7 col-xs-offset-3">
-            <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">BUAT</button>
+        <div class="form-group">
+            <label class="col-xs-3 control-label">Mata Pelajaran</label>
+            <div class="col-xs-7 selectContainer">
+                <select class="form-control" name="subject">
+                    <option value="">Pilih Mata Pelajaran</option>
+                    <option value="{{{Auth::user()->teacher->subject->id}}}">{{{Auth::user()->teacher->subject->name}}}</option>
+                </select>
+            </div>
         </div>
-    </div>
-</form>
+
+        <div class="form-group">
+            <label class="col-xs-3 control-label">Tipe Test</label>
+            <div class="col-xs-7 selectContainer">
+                <select class="form-control" name="type">
+                    <option value="">Pilih Tipe Test</option>
+                    <option value="essay">Essay</option>
+                    <option value="multiple_choice">Pilihan ganda</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-xs-3 control-label">Durasi</label>
+            <div class="col-xs-7 selectContainer">
+                <select class="form-control" name="duration">
+                    <option value="">Durasi Test</option>
+                    <option value="30">30 Menit</option>
+                    <option value="60">60 Menit</option>
+                    <option value="90">90 Menit</option>
+                    <option value="120">120 Menit</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-xs-7 col-xs-offset-3">
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">BUAT</button>
+            </div>
+        </div>
+    </form>
 
 <script>
 $(document).ready(function() {
