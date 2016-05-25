@@ -15,6 +15,8 @@ class CreateQuestionsTable extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->increments('id');
             $table->enum('type',['text','image']);
+            $table->integer('test_id')->unsigned();
+            $table->foreign('test_id')->references('id')->on('tests')->onUpdate('cascade')->onDelete('cascade');
             $table->text('question');
             $table->text('a');
             $table->text('b');
