@@ -92,9 +92,11 @@
                     <div class="panel-body">
                         <div class="row" id="navigasi-soal">
                             <!-- show index exams -->
+                            @for ($i = 1; $i <= 5; $i++)
                             <a title="" class="btn btn-fab">
-                                1
+                                {{{$i}}}
                             </a>
+                            @endfor
                             <!-- show index exams -->
                         </div>
                     </div>
@@ -120,11 +122,12 @@
                         <form action="" method="POST" class="form-horizontal" role="form">
                             <div id="soal">
                                 <!-- show exams -->
+                                @for ($i = 1; $i <= 5; $i++)
                                 <div class="soal row">
                                     <div class="col-sm-12">
                                         <div class="container">
-                                            Soal 1
-                                            <div class="form-group" id="soal1">
+                                            Soal {{{$i}}}
+                                            <div class="form-group" id="soal{{{$i}}}">
                                                 <div class="radio">
                                                     <label>
                                                         A.
@@ -160,6 +163,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endfor
                                 <!-- show exams -->
                             </div>
                             <div class="soal row selesai">
@@ -320,18 +324,19 @@
         var indexsidebar         = $('#navigasi-soal');
         var contentexam = $('.soal.row:not(.selesai)');
         var add_button      = $('.add_exam_button');
-        var x = 1;
+        var last = flkty.cells.length;
+        var x = last;
 
        
         $(add_button).click(function(e){
           console.log("wow");
             e.preventDefault();
             x++;
-            var content = '<div class="soal row"><div class="col-sm-12"><div class="container">Soal'+x+'<div class="form-group" id="soal1"><div class="radio"><label>A.<input name="sample1" value="option" type="radio"> asdasdaskdasdadadasjd askdka</label></div><div class="radio"><label>B.<input name="sample1" value="option1" type="radio"> lasdlasdj alskdj asld</label></div><div class="radio"><label>C.<input name="sample1" value="option1" type="radio"> Only when plugged in</label></div><div class="radio"><label>D.<input name="sample1" value="option1" type="radio"> Only when plugged in</label></div><div class="radio"><label>E.<input name="sample1" value="option1" type="radio"> Only when plugged in</label></div></div></div></div></div>';
+            var content = '<div class="soal row"><div class="col-sm-12"><div class="container">Soal'+x+'<div class="form-group" id="soal'+x+'"><div class="radio"><label>A.<input name="sample1" value="option" type="radio"> asdasdaskdasdadadasjd askdka</label></div><div class="radio"><label>B.<input name="sample1" value="option1" type="radio"> lasdlasdj alskdj asld</label></div><div class="radio"><label>C.<input name="sample1" value="option1" type="radio"> Only when plugged in</label></div><div class="radio"><label>D.<input name="sample1" value="option1" type="radio"> Only when plugged in</label></div><div class="radio"><label>E.<input name="sample1" value="option1" type="radio"> Only when plugged in</label></div></div></div></div></div>';
+
             $(indexsidebar).append('<a title="" class="btn btn-fab">'+x+'</a>');
 
             $gallery.flickity( 'append', $(content) );
-            //$(content).insertAfter(contentexam.last());
 
         });
 
