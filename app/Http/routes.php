@@ -5,13 +5,23 @@ Route::get('/', 'LoginHandlerController@handle');
 Route::group(['middleware' => 'auth'], function () {
 
     Route::controller('first-login', 'Auth\FirstLoginController');
+
+    Route::controller('change-password', 'Auth\ChangePasswordController');
+
+    Route::get('credits', function(){
+        return view('credit');
+    });
     /**
      * ADMIN
      */
     Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
         Route::any('/', function () {
-            return "Login As Admin";
+            return view('admin.index');
         });
+        Route::resource('teacher-management', 'Admin\TeacherController');
+        Route::resource('student-management', 'Admin\StudentController');
+        Route::resource('subject-management', 'Admin\SubjectController');
+        Route::resource('test-management', 'Make\TestController');
     });
 
     /**
@@ -30,6 +40,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::any('/', function () {
             return view('teacher.index');
         });
+        Route::resource('test-management', 'Make\TestController');
     });
 
 });

@@ -11,12 +11,12 @@ use Eoola\User;
 
 use Auth;
 
-class FirstLoginController extends Controller
+class ChangePasswordController extends Controller
 {
 
 	public function getIndex()
 	{
-		return view('auth.first-login');
+		return view('auth.change-password');
 	}
 
     public function postIndex(Request $request)
@@ -35,9 +35,4 @@ class FirstLoginController extends Controller
         	]);
     }
 
-    public function getSkip()
-    {
-    	session()->set('skip', true);
-    	return redirect('/');
-    }
 }
