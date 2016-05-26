@@ -42,6 +42,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/','TeacherController@index');
         Route::post('submitexam','TeacherController@storeExam');
         Route::get('submitexam/{id}','TeacherController@makeExam');
+        Route::post('submitexam/{id}','TeacherController@storeExamItem');
 
         Route::get('result/{id}','TeacherController@result');
         Route::get('/dashboard', function () {
