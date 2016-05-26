@@ -41,7 +41,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'teacher', 'middleware' => 'teacher'], function () {
         Route::get('/','TeacherController@index');
         Route::post('submitexam','TeacherController@storeExam');
-        Route::get('submitexam/{code}','TeacherController@makeExam');
+        Route::get('submitexam/{id}','TeacherController@makeExam');
 
         Route::get('result/{id}','TeacherController@result');
         Route::get('/dashboard', function () {

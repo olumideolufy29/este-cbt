@@ -45,17 +45,17 @@ class TeacherController extends Controller
       $exams->user_id = \Auth::user()->id;
       $exams->save();
 
-      return redirect('/teacher/submitexam/'.$request->code_test);
+      return redirect('/teacher/submitexam/'.$exams->id);
     }
 
-    public function makeExam($code)
+    public function makeExam($id)
     {
-      $check = \Eoola\Test::where('code',$code)->first();
+      $check = \Eoola\Test::where('id',$id)->first();
       if ($check == null) {
         return redirect('/teacher')->withErrors(['msg' => 'kode ujian untuk '.$code.' tidak ditemukan']);
       }
 
-      return view('buatSoal',['type' => $check->type]);
+      return view('teacher.createExamItem',['exam' => $check]);
     }
 
 }

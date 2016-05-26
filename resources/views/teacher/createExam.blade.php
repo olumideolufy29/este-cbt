@@ -8,7 +8,7 @@ Dashboard Guru
 <h1 class="text-center" style="color: #343C47; font-weight: bold;">INFORMASI TEST
 <br><small style="color: #343C47;">(Isikan kolom berikut dengan benar)</small></h1><br>
 
-<form id="productForm" action="teacher/submitexam" method="post" class="form-horizontal">
+<form id="productForm" action="submitexam" method="post" class="form-horizontal">
 
 
     @if (count($errors) > 0)
