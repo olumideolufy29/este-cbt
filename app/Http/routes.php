@@ -54,7 +54,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 Route::get('/test', function () {
-    return view('dashboardsiswa');
+    return view('ujian');
 
 });
 
