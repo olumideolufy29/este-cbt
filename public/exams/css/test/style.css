@@ -24,6 +24,7 @@
 .tes .row #sidebar .panel-body {
     min-height: 50vh;
     overflow: auto;
+    max-height: 58vh;
 }
 
 #sidebar .btn-fab {
@@ -90,4 +91,16 @@ MAIN
     background: #fff;
     width: 64px;
     padding: 10px;
+}
+#main .flickity-prev-next-button{
+    background: #fff;
+    border-radius: 2px;
+    padding: 2em
+}
+
+#main .flickity-prev-next-button.previous{
+    left : -25px;
+}
+#main .flickity-prev-next-button.next{
+    right : -25px;
 }

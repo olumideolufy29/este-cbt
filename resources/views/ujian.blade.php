@@ -9,8 +9,8 @@
         Test Page
     </title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{ URL::asset('exams/css/bootstrap.css') }}" />
-    <link rel="stylesheet" href="{{ URL::asset('exams/css/material.css') }}" />
+    <link rel="stylesheet" href="{{ URL::asset('exams/css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ URL::asset('exams/css/material.min.css') }}" />
     <link rel="stylesheet" href="{{ URL::asset('exams/css/ripples.css') }}" />
     <link rel="stylesheet" href="{{ URL::asset('exams/css/font-awesome.css') }}" />
     <link rel="stylesheet" href="{{ URL::asset('exams/css/test/materialize.css') }}" />
@@ -24,9 +24,9 @@
                 <![endif]-->
 </head>
 
-<body class="tes">
-    <nav class="navbar navbar-default white black-text z-depth-1" role="navigation">
-        <div class="container-fluid">
+<body class="tes orange darken-3">
+    <nav class="navbar white black-text z-depth-1" role="navigation">
+        <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -41,7 +41,7 @@
                         </span>
                 </button>
                 <a class="navbar-brand" href="#">
-                        PAPS <b>UGM</b>
+                        <b>ESTE</b> <small>Electronic School Test</small>
                     </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -49,12 +49,6 @@
                 <div class="nav navbar-nav">
                 </div>
                 <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="#" title="" class="blue white-text">
-                            Waktu Tersisa
-                            <b style="font-size:1.2em">20:12</b>
-                        </a>
-                    </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 Nama Pengguna
@@ -69,28 +63,38 @@
                             </li>
                         </ul>
                     </li>
+
+                    <li>
+                        <a href="#" title="" class="orange white-text">
+                            Waktu Tersisa
+                            <b style="font-size:1.2em">20:12</b>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse  -->
         </div>
-        <div class="progress progress-striped active">
-            <div class="progress-bar progress-bar-success active" style="width:25%">
-            </div>
-        </div>
+<!--         <div class="progress progress-striped active">
+    <div class="progress-bar progress-bar-success active" style="width:25%">
+    </div>
+</div> -->
     </nav>
+    <br/>
+
+    <div class="container">
     <div class="row">
-        <div class="col-sm-4 col-md-4 col-lg-3">
+        <div class="col-sm-4 col-md-4 col-lg-4">
             <div id="sidebar">
                 <div class="panel panel-default">
-                    <div class="panel-heading blue white-text">
-                        <h3 class="panel-title">
-                                <b>
-                                    Navigasi Soal
-                                </b>
-                            </h3>
-                        <div class="clearfix">
-                        </div>
-                    </div>
+<!--                     <div class="panel-heading green white-text">
+    <h3 class="panel-title">
+            <b>
+                Navigasi Soal
+            </b>
+        </h3>
+    <div class="clearfix">
+    </div>
+</div> -->
                     <div class="progress progress-striped active" style="height:20px">
                         <div class="progress-bar progress-bar-success active" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width:25%">
                             5/20
@@ -98,74 +102,16 @@
                     </div>
                     <div class="panel-body">
                         <div class="row" id="navigasi-soal">
-                            <a href="#" title="" class="btn btn-fab done">
-                                    1
-                                </a>
-                            <a href="#" title="" class="btn btn-fab">
-                                    2
-                                </a>
-                            <a href="#" title="" class="btn btn-fab">
-                                    3
-                                </a>
-                            <a href="#" title="" class="btn btn-fab">
-                                    4
-                                </a>
-                            <a href="#" title="" class="btn btn-fab">
-                                    5
-                                </a>
-                            <a href="#" title="" class="btn btn-fab">
-                                    6
-                                </a>
-                            <a href="#" title="" class="btn btn-fab">
-                                    7
-                                </a>
-                            <a href="#" title="" class="btn btn-fab">
-                                    8
-                                </a>
-                            <a href="#" title="" class="btn btn-fab">
-                                    9
-                                </a>
-                            <a href="#" title="" class="btn btn-fab">
-                                    10
-                                </a>
-                            <a href="#" title="" class="btn btn-fab">
-                                    11
-                                </a>
-                            <a href="#" title="" class="btn btn-fab">
-                                    12
-                                </a>
-                            <a href="#" title="" class="btn btn-fab">
-                                    13
-                                </a>
-                            <a href="#" title="" class="btn btn-fab">
-                                    14
-                                </a>
-                            <a href="#" title="" class="btn btn-fab">
-                                    15
-                                </a>
-                            <a href="#" title="" class="btn btn-fab">
-                                    16
-                                </a>
-                            <a href="#" title="" class="btn btn-fab">
-                                    17
-                                </a>
-                            <a href="#" title="" class="btn btn-fab">
-                                    18
-                                </a>
-                            <a href="#" title="" class="btn btn-fab">
-                                    19
-                                </a>
-                            <a href="#" title="" class="btn btn-fab">
-                                    20
-                                </a>
-                            <a href="#" title="" class="btn btn-fab">
-                                    21
-                                </a>
+
+                            @for ($i = 1; $i <= 50; $i++)
+                            <a title="" class="btn btn-fab">
+                                {{$i}}
+                            </a>                            
+                            @endfor
+
                         </div>
                     </div>
                     <div class="panel-footer">
-                        Keterangan :
-                        <br/>
                         <a class="btn btn-fab btn-fab-mini green"></a> Soal sudah dijawab
                         <br/>
                         <a class="btn btn-fab btn-fab-mini white"></a> Soal belum dijawab
@@ -174,95 +120,54 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-8 col-md-8 col-lg-9">
+        <div class="col-sm-8 col-md-8 col-lg-8">
             <div id="main">
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <form action="" method="POST" class="form-horizontal" role="form">
                             <div id="soal">
+                                @for ($i = 1; $i <= 50; $i++)
                                 <div class="soal row">
                                     <div class="col-sm-12">
                                         <div class="container">
-                                            Soal 1
-                                            <div class="form-group" id="soal1">
+                                            Soal {{$i}}
+                                            <div class="form-group" id="soal{{$i}}">
                                                 <div class="radio">
                                                     <label>
-                                                        <input name="sample0" value="option1" type="radio"> <img src="{{ URL::asset('exams/img/ujian.png') }}" height="100" alt="">
+                                                        A.
+                                                        <input name="sample{{$i}}" value="option" type="radio"> asdasdaskdasdadadasjd askdka
                                                     </label>
                                                 </div>
                                                 <div class="radio">
                                                     <label>
-                                                        <input name="sample0" value="option1" type="radio"> <img src="{{ URL::asset('exams/img/ujian.png') }}" alt="" height="100">
+                                                        B.
+                                                        <input name="sample{{$i}}" value="option1" type="radio"> lasdlasdj alskdj asld
                                                     </label>
                                                 </div>
                                                 <div class="radio">
                                                     <label>
-                                                        <input name="sample0" value="option1" type="radio"> Only when plugged in
+                                                        C.
+                                                        <input name="sample{{$i}}" value="option1" type="radio"> Only when plugged in
                                                     </label>
                                                 </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        D.
+                                                        <input name="sample{{$i}}" value="option1" type="radio"> Only when plugged in
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        E.
+                                                        <input name="sample{{$i}}" value="option1" type="radio"> Only when plugged in
+                                                    </label>
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="soal row">
-                                    <div class="col-sm-12">
-                                        Soal 2
-                                            <div class="form-group" id="soal2">
-                                                <div class="radio">
-                                                    <label>
-                                                        <input name="sample1" value="s2" type="radio"> <img src="{{ URL::asset('exams/img/ujian.png') }}" height="100" alt="">
-                                                    </label>
-                                                </div>
-                                                <div class="radio">
-                                                    <label>
-                                                        <input name="sample1" value="s2" type="radio"> <img src="{{ URL::asset('exams/img/ujian.png') }}" alt="" height="100">
-                                                    </label>
-                                                </div>
-                                                <div class="radio">
-                                                    <label>
-                                                        <input name="sample1" value="s2" type="radio"> Only when plugged in
-                                                    </label>
-                                                </div>
-                                            </div>
-                                    </div>
-                                </div>
-                                <div class="soal row">
-                                    <div class="col-sm-12">
-                                        Soal 3
-                                            <div class="form-group" id="soal3">
-                                                <div class="radio">
-                                                    <label>
-                                                        <input name="sample2" value="s2" type="radio"> <img src="{{ URL::asset('exams/img/ujian.png') }}" height="100" alt="">
-                                                    </label>
-                                                </div>
-                                                <div class="radio">
-                                                    <label>
-                                                        <input name="sample2" value="s2" type="radio"> <img src="{{ URL::asset('exams/img/ujian.png') }}" alt="" height="100">
-                                                    </label>
-                                                </div>
-                                                <div class="radio">
-                                                    <label>
-                                                        <input name="sample2" value="s2" type="radio"> Only when plugged in
-                                                    </label>
-                                                </div>
-                                            </div>
-                                    </div>
-                                </div>
-                                <div class="soal row">
-                                    <div class="col-sm-12">
-                                        Soal 3
-                                    </div>
-                                </div>
-                                <div class="soal row">
-                                    <div class="col-sm-12">
-                                        Soal 3
-                                    </div>
-                                </div>
-                                <div class="soal row">
-                                    <div class="col-sm-12">
-                                        Terakhir
-                                    </div>
-                                </div>
+                                @endfor
                             </div>
                             <div class="soal row selesai">
                                 <div class="col-sm-12 text-center">
@@ -294,6 +199,10 @@
             </div>
         </div>
     </div>
+    </div>
+    <div class="white card" style="padding:32px;text-align:center;bottom:0;">
+        <b>Ilmu Komputer</b> Universitas Gadjah Mada
+    </div>
     <!-- jQuery -->
     <script src="{{ URL::asset('exams/js/jquery.js') }}"></script>
     <!-- Bootstrap JavaScript -->
@@ -304,6 +213,7 @@
     $(document).ready(function() {
 
         $.material.init();
+
         var $gallery = $('#soal').flickity({
             cellAlign: "center",
             autoPlay: false,
@@ -328,33 +238,24 @@
         }
 
         var changeDone = function(number) {
-            $("#soal"+number).each(function(){             
-              var radio_val = $(this).find('input[type="radio"]:checked');     
-              if($(this).find('input[type="radio"]:checked').length > 0){
-                console.log(radio_val);
+
+            if($("#soal"+number).find('input[type="radio"]:checked').length > 0){
                 $('#navigasi-soal a:nth-child(' + number + ')').addClass('done');
-              }
-            });
+            }
         }
 
         var updateSoal = function() {
+            changeDone(currentSoal);
+
             currentSoal = flkty.selectedIndex + 1;
             beforeSoal = flkty.selectedIndex;
             nextSoal = currentSoal +1;
-
-            if (beforeSoal != 0) {   
-                changeDone(beforeSoal);
-            }
-
-            changeDone(nextSoal);
-
 
             $('#id_current').html(currentSoal /*+ "<small>/" + jmlSoal + "</small>"*/);
             $('#navigasi-soal a').removeClass('selected');
 
             $('#navigasi-soal a:nth-child(' + currentSoal + ')').addClass('selected');
 
-            changeDone(currentSoal);
 
             jmlDone = $('#navigasi-soal .done').length;
             progressPercent = (jmlDone / jmlSoal) * 100;
@@ -367,9 +268,13 @@
         }
         updateSoal();
 
+        var slideTo = function (index) {
+            $gallery.flickity('select', index, false, false);
+        }
+
         $('#navigasi-soal').on('click', '.btn', function() {
             var index = $(this).index();
-            $gallery.flickity('select', index, false, false);
+            slideTo(index);
             updateSoal();
         });
 
@@ -380,14 +285,14 @@
 
         $('#first').on('click', function() {
             var index = 0;
-            $gallery.flickity('select', index, false, false);
+            slideTo(index);
             updateSoal();
         });
 
 
         $('#last').on('click', function() {
             var index = flkty.cells.length - 1;
-            $gallery.flickity('select', index, false, false);
+            slideTo(index);
             updateSoal();
         });
 
