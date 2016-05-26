@@ -35,4 +35,10 @@ class LoginHandlerController extends Controller
 			return redirect('login');
 		}
 	}
+
+	public function changePass()
+	{
+		return view('changePassword');
+	}
+
 }

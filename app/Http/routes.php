@@ -28,7 +28,9 @@ Route::group(['middleware' => 'auth'], function () {
      * STUDENT
      */
     Route::group(['prefix' => 'student', 'middleware' => 'student'], function () {
-        Route::any('/', function () {
+        Route::get('/','StudentController@index');
+        Route::get('/ujian/{id}','StudentController@ujian');
+        Route::any('/dashboard', function () {
             return view('student.index');
         });
     });
@@ -37,7 +39,12 @@ Route::group(['middleware' => 'auth'], function () {
      * TEACHER
      */
     Route::group(['prefix' => 'teacher', 'middleware' => 'teacher'], function () {
-        Route::any('/', function () {
+        Route::get('/','TeacherController@index');
+        Route::post('submitexam','TeacherController@storeExam');
+        Route::get('submitexam/{id}','TeacherController@makeExam');
+
+        Route::get('result/{id}','TeacherController@result');
+        Route::get('/dashboard', function () {
             return view('teacher.index');
         });
         Route::resource('test-management', 'Make\TestController');
@@ -46,8 +53,9 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 
-Route::get('/ujian', function () {
+Route::get('/test', function () {
     return view('ujian');
+
 });
 
 /**
@@ -57,9 +65,7 @@ Route::get('login', 'Auth\AuthController@showLoginForm');
 Route::post('login', 'Auth\AuthController@login');
 Route::get('logout', 'Auth\AuthController@logout');
 
-Route::get('password/change', function () {
-    return view('changePassword');
-});
+Route::get('password/change','LoginHandlerController@changePass');
 
 /*
 // Registration Routes...
