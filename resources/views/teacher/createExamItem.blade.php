@@ -134,35 +134,35 @@
                                                 <div class="radio form-inline">
                                                     <label>
                                                         A.
-                                                        <input name="key[{{{$i}}}]" value="0" type="radio"> 
+                                                        <input name="key[{{{$i}}}]" value="a" type="radio"> 
                                                         <input name="jawaban[{{{$i}}}][] type="text" class="form-control" placeholder="Text input">
                                                     </label>
                                                 </div>
                                                 <div class="radio form-inline">
                                                     <label>
                                                         B.
-                                                        <input name="key[{{{$i}}}]" value="1" type="radio"> 
+                                                        <input name="key[{{{$i}}}]" value="b" type="radio"> 
                                                         <input name="jawaban[{{{$i}}}][] type="text" class="form-control" placeholder="Text input">
                                                     </label>
                                                 </div>
                                                 <div class="radio form-inline">
                                                     <label>
                                                         C.
-                                                        <input name="key[{{{$i}}}]" value="2" type="radio">
+                                                        <input name="key[{{{$i}}}]" value="c" type="radio">
                                                         <input name="jawaban[{{{$i}}}][] type="text" class="form-control" placeholder="Text input">
                                                     </label>
                                                 </div>
                                                 <div class="radio form-inline">
                                                     <label>
                                                         D.
-                                                        <input name="key[{{{$i}}}]" value="3" type="radio">
+                                                        <input name="key[{{{$i}}}]" value="d" type="radio">
                                                         <input name="jawaban[{{{$i}}}][] type="text" class="form-control" placeholder="Text input">
                                                     </label>
                                                 </div>
                                                 <div class="radio form-inline">
                                                     <label>
                                                         E.
-                                                        <input name="key[{{{$i}}}]" value="4" type="radio">
+                                                        <input name="key[{{{$i}}}]" value="e" type="radio">
                                                         <input name="jawaban[{{{$i}}}][] type="text" class="form-control" placeholder="Text input">
                                                     </label>
                                                 </div>
@@ -339,7 +339,7 @@
           console.log("wow");
             e.preventDefault();
             x++;
-            var content = '<div class="soal row"><div class="col-sm-12"><div class="container"><div class="form-group">Soal '+x+'<textarea name="soal['+x+']" id="textarea1" class="form-control" rows="3"></textarea></div><div class="form-group" id="soal'+x+'"><div class="radio form-inline"><label>A.<input name="key['+x+']" value="0" type="radio"> <span class="circle"></span><span class="check"></span><input name="jawaban['+x+'][] type="text" class="form-control" placeholder="Text input"></label></div><div class="radio form-inline"><label>B.<input name="key['+x+']" value="1" type="radio"> <span class="circle"></span><span class="check"></span><input name="jawaban['+x+'][] type="text" class="form-control" placeholder="Text input"></label></div><div class="radio form-inline"><label>C.<input name="key['+x+']" value="2" type="radio"><span class="circle"></span><span class="check"></span><input name="jawaban['+x+'][] type="text" class="form-control" placeholder="Text input"></label></div><div class="radio form-inline"><label>D.<input name="key['+x+']" value="3" type="radio"><span class="circle"></span><span class="check"></span><input name="jawaban['+x+'][] type="text" class="form-control" placeholder="Text input"></label></div><div class="radio form-inline"><label>E.<input name="key['+x+']" value="4" type="radio"><span class="circle"></span><span class="check"></span><input name="jawaban['+x+'][] type="text" class="form-control" placeholder="Text input"></label></div></div></div></div></div>';
+            var content = '<div class="soal row"><div class="col-sm-12"><div class="container"><div class="form-group">Soal '+x+'<textarea name="soal['+x+']" id="textarea1" class="form-control" rows="3"></textarea></div><div class="form-group" id="soal'+x+'"><div class="radio form-inline"><label>A.<input name="key['+x+']" value="a" type="radio"> <span class="circle"></span><span class="check"></span><input name="jawaban['+x+'][] type="text" class="form-control" placeholder="Text input"></label></div><div class="radio form-inline"><label>B.<input name="key['+x+']" value="b" type="radio"> <span class="circle"></span><span class="check"></span><input name="jawaban['+x+'][] type="text" class="form-control" placeholder="Text input"></label></div><div class="radio form-inline"><label>C.<input name="key['+x+']" value="c" type="radio"><span class="circle"></span><span class="check"></span><input name="jawaban['+x+'][] type="text" class="form-control" placeholder="Text input"></label></div><div class="radio form-inline"><label>D.<input name="key['+x+']" value="d" type="radio"><span class="circle"></span><span class="check"></span><input name="jawaban['+x+'][] type="text" class="form-control" placeholder="Text input"></label></div><div class="radio form-inline"><label>E.<input name="key['+x+']" value="e" type="radio"><span class="circle"></span><span class="check"></span><input name="jawaban['+x+'][] type="text" class="form-control" placeholder="Text input"></label></div></div></div></div></div>';
 
             $(indexsidebar).append('<a title="" class="btn btn-fab">'+x+'</a>');
 

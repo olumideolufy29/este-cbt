@@ -60,25 +60,32 @@ class TeacherController extends Controller
 
     public function storeExamItem(Request $request, $id)
     {
-      //dd($request);
 
-      //$request->soal;
+      //insert validator here
 
       foreach ($request->soal as $id => $value) {
         //insert soal
         $soal = $value;
 
-        echo $soal.'<br>';
-        //insert jawaban
         $a = $request->jawaban[$id][0];
         $b = $request->jawaban[$id][1];
         $c = $request->jawaban[$id][2];
         $d = $request->jawaban[$id][3];
         $e = $request->jawaban[$id][4];
-        echo $a.' '.$b.' '.$c.' '.$d.' '.$e.'<br>';
-        echo 'jawaban : '.$request->key[$id].'<br><br>';
+
+        $jawaban = $request->key[$id];
+
+        $question = new \Eoola\Question;
+        $question->type = 'text';
+        $question->test_id = $id;
+        $question->question = $soal;
+        $question->a = $a;
+        $question->b = $b;
+        $question->c = $c;
+        $question->d = $d;
+        $question->e = $e;
+        $question->correct_answer = $jawaban; 
+        $question->difficulty = "GODLIKE";
       }
-
     }
-
 }
