@@ -66,10 +66,11 @@
                 <!-- SIDEBAR USER TITLE -->
                 <div class="profile-usertitle">
                     <div class="profile-usertitle-name">
-                        Lukman Heryawan
+                        {{ucwords(auth()->user()->name)}}
                     </div>
                     <div class="profile-usertitle-job">
-                        Siswa
+                        {{ucwords(auth()->user()->role)}}
+
                     </div>
                 </div>
                 <!-- END SIDEBAR USER TITLE -->

@@ -5,11 +5,23 @@ Route::get('/', 'LoginHandlerController@handle');
 Route::group(['middleware' => 'auth'], function () {
 
     Route::controller('first-login', 'Auth\FirstLoginController');
+
+    Route::controller('change-password', 'Auth\ChangePasswordController');
+
+    Route::get('credits', function(){
+        return view('credit');
+    });
     /**
      * ADMIN
      */
     Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
-        Route::get('/','AdminController@index');
+        Route::any('/', function () {
+            return view('admin.index');
+        });
+        Route::resource('teacher-management', 'Admin\TeacherController');
+        Route::resource('student-management', 'Admin\StudentController');
+        Route::resource('subject-management', 'Admin\SubjectController');
+        Route::resource('test-management', 'Make\TestController');
     });
 
     /**
@@ -18,6 +30,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'student', 'middleware' => 'student'], function () {
         Route::get('/','StudentController@index');
         Route::get('/ujian/{id}','StudentController@ujian');
+        Route::any('/dashboard', function () {
+            return view('student.index');
+        });
     });
 
     /**
@@ -29,6 +44,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('submitexam/{code}','TeacherController@makeExam');
 
         Route::get('result/{id}','TeacherController@result');
+        Route::get('/dashboard', function () {
+            return view('teacher.index');
+        });
+        Route::resource('test-management', 'Make\TestController');
     });
 
 });

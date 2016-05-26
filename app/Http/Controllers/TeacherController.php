@@ -11,7 +11,7 @@ class TeacherController extends Controller
 {
     public function index()
     {
-      return view('DashboardGuru');
+      return view('teacher.createExam');
     }
 
     public function result($id)

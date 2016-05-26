@@ -54,9 +54,9 @@
 </nav>
 
 <div class="container">
-    <div class="row profile">
+    <div class="row ">
     <div class="col-md-3">
-      <div class="profile-sidebar">
+      <div class="profile-sidebar card">
         <!-- SIDEBAR USERPIC -->
         <div class="profile-userpic">
           <img src="{{ URL::asset('assets') }}/image/person-girl-flat.png" class="img-responsive" alt="">
@@ -103,7 +103,7 @@
       </div>
     </div>
     <div class="col-md-9">
-            <div class="profile-content">
+            <div class="profile-content card">
             <!-- Include Bootstrap Combobox -->
             <!-- <link rel="stylesheet" href="/vendor/bootstrap-combobox/css/bootstrap-combobox.css">
 

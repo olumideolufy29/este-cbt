@@ -21,7 +21,7 @@
     <img class="center" src="{{ URL::asset('assets/image/alert.png') }}" width="10%">
     </div>
     <h3 class="text-center" style="color: #343C47; font-weight: bold;">GANTI KATA SANDI ANDA
-    <br><small style="color: #343C47;"></small></h3>
+    <br><small style="color: #343C47;">(Untuk pertama kali silahkan ganti kata sandi akun ada)</small></h3>
    <div class="container">
         <div class="card2 card-container">
             <form class="form-signin">
@@ -60,7 +60,7 @@
 
             </form><!-- /form -->
             <div class="text-center" style="font-weight: bold;">
-                <a href="{{url('/')}}" style="color:white">Batal</a>
+                <a href="{{url('first-login/skip')}}" style="color:white">LEWATI</a>
             </div>
         </div><!-- /card-container -->
     </div><!-- /container -->
