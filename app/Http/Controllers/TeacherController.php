@@ -60,13 +60,10 @@ class TeacherController extends Controller
 
     public function storeExamItem(Request $request, $id)
     {
-
       //insert validator here
 
       foreach ($request->soal as $id => $value) {
-        //insert soal
         $soal = $value;
-
         $a = $request->jawaban[$id][0];
         $b = $request->jawaban[$id][1];
         $c = $request->jawaban[$id][2];
@@ -86,6 +83,7 @@ class TeacherController extends Controller
         $question->e = $e;
         $question->correct_answer = $jawaban; 
         $question->difficulty = "GODLIKE";
+        $question->save();
       }
     }
 }
