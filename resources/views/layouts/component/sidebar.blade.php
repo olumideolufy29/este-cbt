@@ -31,8 +31,8 @@
 
                     @if(auth()->user()->role == "teacher")
                     <ul class="nav">
-                        <li class="active">
-                            <a href="{{url('/')}}">
+                        <li>
+                            <a href="{{url('/teacher')}}">
                             <i class="glyphicon glyphicon-home"></i>
                             Overview </a>
                         </li>
@@ -54,8 +54,8 @@
                     </ul>
                     @elseif(auth()->user()->role == "admin")
                     <ul class="nav">
-                        <li class="active">
-                            <a href="{{url('/')}}">
+                        <li>
+                            <a href="{{url('/admin')}}">
                             <i class="glyphicon glyphicon-home"></i>
                             Overview </a>
                         </li>

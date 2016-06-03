@@ -5,7 +5,7 @@ Tentang Sistem ESTE
 @endsection
 
 @section('content')
-		<h3 class="text-center" style="color: #343C47; font-weight: bold;">CREDITS DEVELOPER</h3><br>       
+<h3 class="text-center" style="color: #343C47; font-weight: bold;">CREDITS DEVELOPER</h3><br>       
 <center><b>TIM PUTIH</b><br><br>
 
     <div class="row">

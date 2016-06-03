@@ -83,43 +83,6 @@
 
     <div class="container">
     <div class="row">
-        <div class="col-sm-4 col-md-4 col-lg-4">
-            <div id="sidebar">
-                <div class="panel panel-default">
-<!--                     <div class="panel-heading green white-text">
-    <h3 class="panel-title">
-            <b>
-                Navigasi Soal
-            </b>
-        </h3>
-    <div class="clearfix">
-    </div>
-</div> -->
-                    <div class="progress progress-striped active" style="height:20px">
-                        <div class="progress-bar progress-bar-success active" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width:25%">
-                            5/20
-                        </div>
-                    </div>
-                    <div class="panel-body">
-                        <div class="row" id="navigasi-soal">
-
-                            @for ($i = 1; $i <= 50; $i++)
-                            <a title="" class="btn btn-fab">
-                                {{$i}}
-                            </a>                            
-                            @endfor
-
-                        </div>
-                    </div>
-                    <div class="panel-footer">
-                        <a class="btn btn-fab btn-fab-mini green"></a> Soal sudah dijawab
-                        <br/>
-                        <a class="btn btn-fab btn-fab-mini white"></a> Soal belum dijawab
-                        <br/>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="col-sm-8 col-md-8 col-lg-8">
             <div id="main">
                 <div class="panel panel-default">
@@ -194,6 +157,34 @@
                     <div class="progress progress-striped active">
                         <div class="progress-bar progress-bar-success active" style="width:25%">
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <div id="sidebar">
+                <div class="panel panel-default">
+                    <div class="progress progress-striped active" style="height:20px">
+                        <div class="progress-bar progress-bar-success active" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width:25%">
+                            5/20
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row" id="navigasi-soal">
+
+                            @for ($i = 1; $i <= 50; $i++)
+                            <a title="" class="btn btn-fab">
+                                {{$i}}
+                            </a>                            
+                            @endfor
+
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <a class="btn btn-fab btn-fab-mini green"></a> Soal sudah dijawab
+                        <br/>
+                        <a class="btn btn-fab btn-fab-mini white"></a> Soal belum dijawab
+                        <br/>
                     </div>
                 </div>
             </div>

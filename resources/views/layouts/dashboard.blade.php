@@ -68,6 +68,8 @@
     <script src="{{ URL::asset('assets/js/jquery.js') }}"></script>
     <!-- Bootstrap JavaScript -->
     <script src="{{ URL::asset('assets/js/bootstrap.min.js') }}"></script>
+    <script src="{{url('assets/js/app.js')}}"></script>
+
     @yield('script')
 </body>
 </html>

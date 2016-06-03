@@ -20,6 +20,7 @@
 
 	<script src="{{url('jquery.js')}}"></script>
 	<script src="{{url('js/bootstrap.min.js')}}"></script>
+	<script src="{{url('js/app.js')}}"></script>
 
 	@yield('script')
 </body>
