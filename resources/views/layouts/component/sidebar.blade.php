@@ -1,6 +1,13 @@
                 <!-- SIDEBAR USERPIC -->
                 <div class="profile-userpic">
+                    @if(auth()->user()->role == "teacher")
+                    <img src="{{ asset('assets/image/person-girl-flat.png') }}" class="img-responsive" alt="">
+                    @elseif(auth()->user()->role == "admin")
+                    <img src="{{ asset('assets/image/admin-flat.png') }}" class="img-responsive" alt="">
+                    @elseif(auth()->user()->role == "student")
                     <img src="{{ URL::asset('assets/image/person-flat.png') }}" class="img-responsive" alt="">
+                    @endif
+
                 </div>
                 <!-- END SIDEBAR USERPIC -->
                 <!-- SIDEBAR USER TITLE -->

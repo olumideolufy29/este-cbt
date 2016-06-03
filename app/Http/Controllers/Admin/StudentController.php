@@ -6,9 +6,14 @@ use Illuminate\Http\Request;
 
 use Eoola\Http\Requests;
 use Eoola\Http\Controllers\Controller;
+use Eoola\Http\Requests\StudentManagement;
+use Eoola\Http\Requests\StudentUpdate;
+
+use Eoola\Student;
 
 class StudentController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +21,10 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+        $students = Student::paginate(20);
+        return view('admin.student.index',[
+            'students' => $students,
+            ]);
     }
 
     /**
@@ -26,7 +34,8 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.student.create');
+        
     }
 
     /**
@@ -35,9 +44,13 @@ class StudentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StudentManagement $request)
     {
-        //
+        $student = new Student;
+        $student->code = $request->code;
+        $student->name = $request->name;
+        $student->save();
+        return redirect()->route('admin.student-management.index');
     }
 
     /**
@@ -48,7 +61,10 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        //
+        $student = Student::find($id);
+        return view('admin.student.show',[
+            'student' => $student,
+            ]);
     }
 
     /**
@@ -59,7 +75,10 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $student = Student::find($id);
+        return view('admin.student.edit',[
+            'student' => $student,
+            ]);
     }
 
     /**
@@ -69,9 +88,12 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StudentUpdate $request, $id)
     {
-        //
+        $student = Student::find($id);
+        $student->name = $request->name;
+        $student->save();
+        return redirect()->route('admin.student-management.index');
     }
 
     /**
@@ -82,6 +104,7 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        //
-    }
+        $student = Student::find($id)->delete();
+        return redirect()->route('admin.student-management.index');
+    }   
 }

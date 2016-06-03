@@ -11,45 +11,45 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('credits', function(){
         return view('credit');
     });
-    /**
-     * ADMIN
-     */
-    Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
-        Route::any('/', function () {
-            return view('admin.index');
-        });
-        Route::resource('teacher-management', 'Admin\TeacherController');
-        Route::resource('student-management', 'Admin\StudentController');
-        Route::resource('subject-management', 'Admin\SubjectController');
-        Route::resource('test-management', 'Make\TestController');
+
+});
+
+/**
+ * ADMIN
+ */
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
+    Route::any('/', function () {
+        return view('admin.index');
     });
+    Route::resource('teacher-management', 'Admin\TeacherController');
+    Route::resource('student-management', 'Admin\StudentController');
+    Route::resource('subject-management', 'Admin\SubjectController');
+    Route::resource('test-management', 'Make\TestController');
+});
 
-    /**
-     * STUDENT
-     */
-    Route::group(['prefix' => 'student', 'middleware' => 'student'], function () {
-        Route::get('/','StudentController@index');
-        Route::get('/ujian/{id}','StudentController@ujian');
-        Route::any('/dashboard', function () {
-            return view('student.index');
-        });
+/**
+ * STUDENT
+ */
+Route::group(['prefix' => 'student', 'middleware' => 'student'], function () {
+    Route::get('/ujian/{id}','StudentController@ujian');
+    Route::any('/', function () {
+        return view('student.index');
     });
+});
 
-    /**
-     * TEACHER
-     */
-    Route::group(['prefix' => 'teacher', 'middleware' => 'teacher'], function () {
-        Route::get('/','TeacherController@index');
-        Route::post('submitexam','TeacherController@storeExam');
-        Route::get('submitexam/{id}','TeacherController@makeExam');
+/**
+ * TEACHER
+ */
+Route::group(['prefix' => 'teacher', 'middleware' => 'teacher'], function () {
+    Route::get('/','TeacherController@index');
+    Route::post('submitexam','TeacherController@storeExam');
+    Route::get('submitexam/{id}','TeacherController@makeExam');
 
-        Route::get('result/{id}','TeacherController@result');
-        Route::get('/dashboard', function () {
-            return view('teacher.index');
-        });
-        Route::resource('test-management', 'Make\TestController');
+    Route::get('result/{id}','TeacherController@result');
+    Route::get('/dashboard', function () {
+        return view('teacher.index');
     });
-
+    Route::resource('test-management', 'Make\TestController');
 });
 
 

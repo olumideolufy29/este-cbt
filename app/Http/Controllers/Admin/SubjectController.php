@@ -6,9 +6,14 @@ use Illuminate\Http\Request;
 
 use Eoola\Http\Requests;
 use Eoola\Http\Controllers\Controller;
+use Eoola\Http\Requests\SubjectManagement;
+use Eoola\Http\Requests\SubjectUpdate;
+
+use Eoola\Subject;
 
 class SubjectController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +21,10 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        //
+        $subjects = Subject::paginate(20);
+        return view('admin.subject.index',[
+            'subjects' => $subjects,
+            ]);
     }
 
     /**
@@ -26,7 +34,8 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.subject.create');
+        
     }
 
     /**
@@ -35,9 +44,13 @@ class SubjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SubjectManagement $request)
     {
-        //
+        $subject = new Subject;
+        $subject->code = $request->code;
+        $subject->name = $request->name;
+        $subject->save();
+        return redirect()->route('admin.subject-management.index');
     }
 
     /**
@@ -48,7 +61,10 @@ class SubjectController extends Controller
      */
     public function show($id)
     {
-        //
+        $subject = Subject::find($id);
+        return view('admin.subject.show',[
+            'subject' => $subject,
+            ]);
     }
 
     /**
@@ -59,7 +75,10 @@ class SubjectController extends Controller
      */
     public function edit($id)
     {
-        //
+        $subject = Subject::find($id);
+        return view('admin.subject.edit',[
+            'subject' => $subject,
+            ]);
     }
 
     /**
@@ -69,9 +88,12 @@ class SubjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SubjectUpdate $request, $id)
     {
-        //
+        $subject = Subject::find($id);
+        $subject->name = $request->name;
+        $subject->save();
+        return redirect()->route('admin.subject-management.index');
     }
 
     /**
@@ -82,6 +104,7 @@ class SubjectController extends Controller
      */
     public function destroy($id)
     {
-        //
-    }
+        $subject = Subject::find($id)->delete();
+        return redirect()->route('admin.subject-management.index');
+    }   
 }
