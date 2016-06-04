@@ -1,29 +1,22 @@
 @extends('layouts.dashboard')
 
 @section('title')
-Edit Mata Pelajaran
+Edit Kelas
 @endsection
 
 @section('content')
-<h3 class="text-center" style="color: #343C47; font-weight: bold;">EDIT DATA MATA PELAJARAN
+<h3 class="text-center" style="color: #343C47; font-weight: bold;">EDIT DATA KELAS
 <br><small style="color: #343C47;">(Isikan kolom berikut dengan benar)</small></h3><br>
-<form id="productForm" method="post" class="form-horizontal" action="{{ action('Admin\SubjectController@update', $subject->id) }}">
+<form id="productForm" method="post" class="form-horizontal" action="{{ action('Admin\KelasController@update', $class->id) }}">
     {!! csrf_field() !!}
     {!! method_field('PUT') !!}
 
     @include('common.errors')
-
-    <div class="form-group">
-        <label class="col-xs-4 control-label">Kode Mata Pelajaran</label>
-        <div class="col-xs-6">
-            <input type="text" class="form-control" name="code" placeholder="Masukkan Kode Mata Pelajaran" value="{{ $subject->code or old('code') }}" disabled />
-        </div>
-    </div>
     
     <div class="form-group">
-        <label class="col-xs-4 control-label">Nama Mata Pelajaran</label>
+        <label class="col-xs-4 control-label">Nama Kelas</label>
         <div class="col-xs-6">
-            <input type="text" class="form-control" name="name" placeholder="Masukkan Nama Mata Pelajaran" value="{{ $subject->name or old('name') }}" required />
+            <input type="text" class="form-control" name="name" placeholder="Masukkan Nama Kelas" value="{{ $class->name or old('name') }}" required />
         </div>
     </div>
 

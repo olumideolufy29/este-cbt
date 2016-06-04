@@ -4,8 +4,9 @@ namespace Eoola;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Class extends Model
+class Kelas extends Model
 {
+	protected $table = "classes";
     protected $fillable = [
     	'name'
     ];

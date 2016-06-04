@@ -24,7 +24,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::resource('teacher-management', 'Admin\TeacherController');
     Route::resource('student-management', 'Admin\StudentController');
     Route::resource('subject-management', 'Admin\SubjectController');
-    Route::resource('class-management', 'Admin\ClassController');
+    Route::resource('class-management', 'Admin\KelasController');
     Route::resource('test-management', 'Make\TestController');
 });
 

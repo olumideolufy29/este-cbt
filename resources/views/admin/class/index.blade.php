@@ -1,11 +1,11 @@
 @extends('layouts.dashboard')
 
 @section('title')
-Manajemen Mata Pelajaran
+Manajemen Kelas
 @endsection
 
 @section('content')
-<h3 class="text-center" style="color: #343C47; font-weight: bold;">MANAJEMEN MATA PELAJARAN</h3><br>
+<h3 class="text-center" style="color: #343C47; font-weight: bold;">MANAJEMEN KELAS</h3><br>
  <div class="row">
         <div class="col-md-12">
 
@@ -13,38 +13,44 @@ Manajemen Mata Pelajaran
               <div class="panel-heading">
                 <div class="row">
                   <div class="col col-xs-7">
-                    <a href="{{action('Admin\SubjectController@create')}}" class="btn btn-sm btn-primary btn-create">Tambah Mata Pelajaran</a>
+                  	@if(auth()->user()->role == 'admin')
+                    <a href="{{action('Admin\KelasController@create')}}" class="btn btn-sm btn-primary btn-create">Tambah Kelas</a>
+                    @endif
                   </div>
-                  <div class="col col-xs-5 text-right">
-                    <input type="search" name="" id="input" class="form-control" value="" required="required" title="" placeholder="Cari Mata Pelajaran..">
-                  </div>
+
                 </div>
               </div>
               <div class="panel-body">
                 <table class="table table-striped table-bordered table-list">
 					<thead>
 					<tr>
+                  	@if(auth()->user()->role == 'admin')
 					    <th><i class="glyphicon glyphicon-cog"></i></th>
-					    <th>Kode</th>
-					    <th>Mata Pelajaran</th>
+					@endif
+					    <th>Nama Kelas</th>
+					    <th>Keterangan</th>
 					</tr> 
 					</thead>
 					<tbody>
-						@foreach($subjects as $subject)
+						@foreach($classs as $class)
 						<tr>
+                  	@if(auth()->user()->role == 'admin')
 						<td align="center">
-	                        <form action="{{ url('admin/subject-management/'.$subject->id) }}" method="POST">
+	                        <form action="{{ url('admin/class-management/'.$class->id) }}" method="POST">
 	                            {!! csrf_field() !!}
 	                            {!! method_field('DELETE') !!}
-								<a href="{{ url('/admin/subject-management/'.$subject->id.'/edit') }}" class="btn btn-default"><i class="glyphicon glyphicon-pencil"></i></a>
-								{{-- <a href="{{ url('/admin/subject-management/'.$subject->id) }}"class="btn btn-primary"><i class="glyphicon glyphicon-eye-open"></i></a> --}}
+								<a href="{{ url('/admin/class-management/'.$class->id.'/edit') }}" class="btn btn-default"><i class="glyphicon glyphicon-pencil"></i></a>
+								{{-- <a href="{{ url('/admin/class-management/'.$class->id) }}"class="btn btn-primary"><i class="glyphicon glyphicon-eye-open"></i></a> --}}
 	                            <button type="submit" class="btn btn-danger">
 	                                <i class="glyphicon glyphicon-trash"></i>
 	                            </button>
 	                        </form>
 						</td>
-						<td>{{ $subject->code }}</td>
-						<td>{{ $subject->name }}</td>
+					@endif
+						<td>{{ $class->name }}</td>
+						<td>
+							<a href="{{ url('/admin/class-management/'.$class->id.'/edit') }}" class="btn btn-default"><i class="glyphicon glyphicon-eye"></i> Lihat Siswa</a>
+						</td>
 						</tr>
 						@endforeach
                     </tbody>
@@ -53,7 +59,7 @@ Manajemen Mata Pelajaran
               </div>
             <div class="panel-footer">
                 <div class="row">
-					{!! $subjects->links() !!}	
+					{!! $classs->links() !!}	
                 </div>
             </div>
         </div>

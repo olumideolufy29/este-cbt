@@ -8,9 +8,9 @@ use Eoola\Http\Requests;
 use Eoola\Http\Controllers\Controller;
 use Eoola\Http\Requests\ClassManagement;
 
-use Eoola\Class;
+use Eoola\Kelas;
 
-class ClassController extends Controller
+class KelasController extends Controller
 {
 
     /**
@@ -20,7 +20,7 @@ class ClassController extends Controller
      */
     public function index()
     {
-        $classs = Class::paginate(20);
+        $classs = Kelas::paginate(20);
         return view('admin.class.index',[
             'classs' => $classs,
             ]);
@@ -45,7 +45,7 @@ class ClassController extends Controller
      */
     public function store(ClassManagement $request)
     {
-        $class = new Class;
+        $class = new Kelas;
         $class->name = $request->name;
         $class->save();
         return redirect()->route('admin.class-management.index');
@@ -59,7 +59,7 @@ class ClassController extends Controller
      */
     public function show($id)
     {
-        $class = Class::find($id);
+        $class = Kelas::find($id);
         return view('admin.class.show',[
             'class' => $class,
             ]);
@@ -73,7 +73,7 @@ class ClassController extends Controller
      */
     public function edit($id)
     {
-        $class = Class::find($id);
+        $class = Kelas::find($id);
         return view('admin.class.edit',[
             'class' => $class,
             ]);
@@ -88,7 +88,7 @@ class ClassController extends Controller
      */
     public function update(ClassManagement $request, $id)
     {
-        $class = Class::find($id);
+        $class = Kelas::find($id);
         $class->name = $request->name;
         $class->save();
         return redirect()->route('admin.class-management.index');
@@ -102,7 +102,7 @@ class ClassController extends Controller
      */
     public function destroy($id)
     {
-        $class = Class::find($id)->delete();
+        $class = Kelas::find($id)->delete();
         return redirect()->route('admin.class-management.index');
     }   
 }

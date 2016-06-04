@@ -2,26 +2,20 @@
 @extends('layouts.dashboard')
 
 @section('title')
-Tambah Mata Pelajaran
+Tambah Kelas
 @endsection
 
 @section('content')
-<h3 class="text-center" style="color: #343C47; font-weight: bold;">TAMBAH DATA MATA PELAJARAN
+<h3 class="text-center" style="color: #343C47; font-weight: bold;">TAMBAH DATA KELAS
 <br><small style="color: #343C47;">(Isikan kolom berikut dengan benar)</small></h3><br>
-<form id="productForm" method="post" class="form-horizontal" action="{{ action('Admin\SubjectController@store') }}">
+<form id="productForm" method="post" class="form-horizontal" action="{{ action('Admin\KelasController@store') }}">
     {!! csrf_field() !!}
     @include('common.errors')
-    <div class="form-group">
-        <label class="col-xs-4 control-label">Kode Mata Pelajaran</label>
-        <div class="col-xs-6">
-            <input type="text" class="form-control" name="code" placeholder="Masukkan Kode Mata Pelajaran" value="{{ old('code') }}" required />
-        </div>
-    </div>
     
     <div class="form-group">
-        <label class="col-xs-4 control-label">Nama Mata Pelajaran</label>
+        <label class="col-xs-4 control-label">Nama Kelas</label>
         <div class="col-xs-6">
-            <input type="text" class="form-control" name="name" placeholder="Masukkan Nama Mata Pelajaran" value="{{ old('name') }}" required />
+            <input type="text" class="form-control" name="name" placeholder="Masukkan Nama Kelas" value="{{ old('name') }}" required />
         </div>
     </div>
 

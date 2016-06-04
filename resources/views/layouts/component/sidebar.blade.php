@@ -75,6 +75,12 @@
                             Manajemen Mata Pelajaran </a>
                         </li>
                         <li>
+                            <a href="{{url('admin/class-management')}}">
+                            <i class="glyphicon glyphicon-user"></i>
+                            Manajemen Kelas </a>
+                        </li>
+
+                        <li>
                             <a href="{{url('admin/test-management')}}">
                             <i class="glyphicon glyphicon-ok"></i>
                             Riwayat Test </a>
