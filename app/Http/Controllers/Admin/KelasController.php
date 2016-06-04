@@ -6,12 +6,11 @@ use Illuminate\Http\Request;
 
 use Eoola\Http\Requests;
 use Eoola\Http\Controllers\Controller;
-use Eoola\Http\Requests\StudentManagement;
-use Eoola\Http\Requests\StudentUpdate;
+use Eoola\Http\Requests\ClassManagement;
 
-use Eoola\Student;
+use Eoola\Kelas;
 
-class StudentController extends Controller
+class KelasController extends Controller
 {
 
     /**
@@ -21,9 +20,9 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::paginate(20);
-        return view('admin.student.index',[
-            'students' => $students,
+        $classs = Kelas::paginate(20);
+        return view('admin.class.index',[
+            'classs' => $classs,
             ]);
     }
 
@@ -34,7 +33,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('admin.student.create');
+        return view('admin.class.create');
         
     }
 
@@ -44,13 +43,12 @@ class StudentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StudentManagement $request)
+    public function store(ClassManagement $request)
     {
-        $student = new Student;
-        $student->code = $request->code;
-        $student->name = $request->name;
-        $student->save();
-        return redirect()->route('admin.student-management.index');
+        $class = new Kelas;
+        $class->name = $request->name;
+        $class->save();
+        return redirect()->route('admin.class-management.index');
     }
 
     /**
@@ -61,9 +59,9 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        $student = Student::find($id);
-        return view('admin.student.show',[
-            'student' => $student,
+        $class = Kelas::find($id);
+        return view('admin.class.show',[
+            'class' => $class,
             ]);
     }
 
@@ -75,9 +73,9 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        $student = Student::find($id);
-        return view('admin.student.edit',[
-            'student' => $student,
+        $class = Kelas::find($id);
+        return view('admin.class.edit',[
+            'class' => $class,
             ]);
     }
 
@@ -88,12 +86,12 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StudentUpdate $request, $id)
+    public function update(ClassManagement $request, $id)
     {
-        $student = Student::find($id);
-        $student->name = $request->name;
-        $student->save();
-        return redirect()->route('admin.student-management.index');
+        $class = Kelas::find($id);
+        $class->name = $request->name;
+        $class->save();
+        return redirect()->route('admin.class-management.index');
     }
 
     /**
@@ -104,7 +102,7 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        $student = Student::find($id)->delete();
-        return redirect()->route('admin.student-management.index');
+        $class = Kelas::find($id)->delete();
+        return redirect()->route('admin.class-management.index');
     }   
 }

@@ -6,9 +6,14 @@ use Illuminate\Http\Request;
 
 use Eoola\Http\Requests;
 use Eoola\Http\Controllers\Controller;
+use Eoola\Http\Requests\TeacherManagement;
+use Eoola\Http\Requests\TeacherUpdate;
+
+use Eoola\Teacher;
 
 class TeacherController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +21,10 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        //
+        $teachers = Teacher::paginate(20);
+        return view('admin.teacher.index',[
+            'teachers' => $teachers,
+            ]);
     }
 
     /**
@@ -26,7 +34,8 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.teacher.create');
+        
     }
 
     /**
@@ -35,9 +44,13 @@ class TeacherController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TeacherManagement $request)
     {
-        //
+        $teacher = new Teacher;
+        $teacher->code = $request->code;
+        $teacher->name = $request->name;
+        $teacher->save();
+        return redirect()->route('admin.teacher-management.index');
     }
 
     /**
@@ -48,7 +61,10 @@ class TeacherController extends Controller
      */
     public function show($id)
     {
-        //
+        $teacher = Teacher::find($id);
+        return view('admin.teacher.show',[
+            'teacher' => $teacher,
+            ]);
     }
 
     /**
@@ -59,7 +75,10 @@ class TeacherController extends Controller
      */
     public function edit($id)
     {
-        //
+        $teacher = Teacher::find($id);
+        return view('admin.teacher.edit',[
+            'teacher' => $teacher,
+            ]);
     }
 
     /**
@@ -69,9 +88,12 @@ class TeacherController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TeacherUpdate $request, $id)
     {
-        //
+        $teacher = Teacher::find($id);
+        $teacher->name = $request->name;
+        $teacher->save();
+        return redirect()->route('admin.teacher-management.index');
     }
 
     /**
@@ -82,6 +104,7 @@ class TeacherController extends Controller
      */
     public function destroy($id)
     {
-        //
-    }
+        $teacher = Teacher::find($id)->delete();
+        return redirect()->route('admin.teacher-management.index');
+    }   
 }

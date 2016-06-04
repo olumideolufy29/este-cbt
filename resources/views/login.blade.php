@@ -2,7 +2,7 @@
   <html>
   <head>
 
-    <title>Computer Based Test</title>
+    <title>ESTE (Electonic School Test)</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, maximum-scale=1">
 

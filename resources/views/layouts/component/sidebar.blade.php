@@ -1,6 +1,13 @@
                 <!-- SIDEBAR USERPIC -->
                 <div class="profile-userpic">
+                    @if(auth()->user()->role == "teacher")
+                    <img src="{{ asset('assets/image/person-girl-flat.png') }}" class="img-responsive" alt="">
+                    @elseif(auth()->user()->role == "admin")
+                    <img src="{{ asset('assets/image/admin-flat.png') }}" class="img-responsive" alt="">
+                    @elseif(auth()->user()->role == "student")
                     <img src="{{ URL::asset('assets/image/person-flat.png') }}" class="img-responsive" alt="">
+                    @endif
+
                 </div>
                 <!-- END SIDEBAR USERPIC -->
                 <!-- SIDEBAR USER TITLE -->
@@ -24,8 +31,8 @@
 
                     @if(auth()->user()->role == "teacher")
                     <ul class="nav">
-                        <li class="active">
-                            <a href="{{url('/')}}">
+                        <li>
+                            <a href="{{url('/teacher')}}">
                             <i class="glyphicon glyphicon-home"></i>
                             Overview </a>
                         </li>
@@ -47,8 +54,8 @@
                     </ul>
                     @elseif(auth()->user()->role == "admin")
                     <ul class="nav">
-                        <li class="active">
-                            <a href="{{url('/')}}">
+                        <li>
+                            <a href="{{url('/admin')}}">
                             <i class="glyphicon glyphicon-home"></i>
                             Overview </a>
                         </li>
@@ -67,6 +74,12 @@
                             <i class="glyphicon glyphicon-user"></i>
                             Manajemen Mata Pelajaran </a>
                         </li>
+                        <li>
+                            <a href="{{url('admin/class-management')}}">
+                            <i class="glyphicon glyphicon-user"></i>
+                            Manajemen Kelas </a>
+                        </li>
+
                         <li>
                             <a href="{{url('admin/test-management')}}">
                             <i class="glyphicon glyphicon-ok"></i>
