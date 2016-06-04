@@ -1,4 +1,5 @@
 <?php
+
 Route::get('/', 'LoginHandlerController@handle');
 
 
@@ -43,6 +44,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
             return view('teacher.index');
         });
         Route::resource('test-management', 'Make\TestController');
+    });
 
 /**
  * STUDENT
@@ -51,7 +53,6 @@ Route::group(['prefix' => 'student', 'middleware' => 'student'], function () {
     Route::get('/ujian/{id}','StudentController@ujian');
     Route::any('/', function () {
         return view('student.index');
->>>>>>> master
     });
 });
 
