@@ -18,7 +18,7 @@ class Student extends Model
     }
 	public function inClass()
     {
-        return $this->belongsTo('Eoola\Class', 'class_id');
+        return $this->belongsTo('Eoola\Kelas', 'class_id');
     }
         
 }

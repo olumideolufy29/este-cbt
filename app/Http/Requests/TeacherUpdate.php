@@ -25,8 +25,9 @@ class TeacherUpdate extends Request
     {
         return [
             'name' => 'required|max:255',
-            'password' => 'required|min:6|confirmed',
             'gender' => 'required|in:Laki-laki,Perempuan',
+            'subject' => 'required|max:255',
+            
         ];
     }
 }

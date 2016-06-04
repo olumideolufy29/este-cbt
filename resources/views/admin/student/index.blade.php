@@ -16,7 +16,7 @@ Manajemen Siswa
                     <a href="{{action('Admin\StudentController@create')}}" class="btn btn-sm btn-primary btn-create">Tambah Siswa</a>
                   </div>
                   <div class="col col-xs-5 text-right">
-                    <input type="search" name="" id="input" class="form-control" value="" required="required" title="" placeholder="Cari Mata Pelajaran..">
+                    <input type="search" name="" id="input" class="form-control" value="" required="required" title="" placeholder="Cari Siswa..">
                   </div>
                 </div>
               </div>
@@ -28,7 +28,8 @@ Manajemen Siswa
 					    <th>NIS</th>
 					    <th>Nama</th>
 					    <th>Kelas</th>
-					    <th>Hasil Studi</th>
+					    <th>Jenis Kelamin</th>
+<!-- 					    <th>Hasil Studi</th> -->
 					</tr> 
 					</thead>
 					<tbody>
@@ -45,8 +46,10 @@ Manajemen Siswa
 	                            </button>
 	                        </form>
 						</td>
-						<td>{{ $student->code }}</td>
-						<td>{{ $student->name }}</td>
+						<td>{{ $student->user->no_induk }}</td>
+						<td>{{ $student->user->name }}</td>
+						<td>{{ $student->inClass->name }}</td>
+						<td>{{ $student->gender }}</td>
 						</tr>
 						@endforeach
                     </tbody>
