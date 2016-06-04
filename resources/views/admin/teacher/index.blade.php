@@ -45,8 +45,10 @@ Manajemen Guru
 	                            </button>
 	                        </form>
 						</td>
-						<td>{{ $teacher->code }}</td>
-						<td>{{ $teacher->name }}</td>
+						<td>{{ $teacher->user->no_induk }}</td>
+						<td>{{ $teacher->user->name }}</td>
+						<td>{{ $teacher->gender }}</td>
+						<td>{{ $teacher->subject->name }}</td>
 						</tr>
 						@endforeach
                     </tbody>

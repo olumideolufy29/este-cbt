@@ -10,6 +10,8 @@ use Eoola\Http\Requests\StudentManagement;
 use Eoola\Http\Requests\StudentUpdate;
 
 use Eoola\Student;
+use Eoola\User;
+use Eoola\Kelas;
 
 class StudentController extends Controller
 {
@@ -34,7 +36,10 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('admin.student.create');
+        $class = Kelas::all();
+        return view('admin.student.create', [
+            'classes' => $class,
+            ]);
         
     }
 
@@ -46,9 +51,18 @@ class StudentController extends Controller
      */
     public function store(StudentManagement $request)
     {
+        $user = new User;
+        $user->name = $request->name;
+        $user->no_induk = $request->no_induk;
+        $user->password = bcrypt('siswa'.$request->no_induk);
+        $user->role = 'student';
+        $user->save();
+        $user = User::where('no_induk', $request->no_induk)->first();
+
         $student = new Student;
-        $student->code = $request->code;
-        $student->name = $request->name;
+        $student->user_id = $user->id;
+        $student->gender = $request->gender;
+        $student->class_id = $request->class;
         $student->save();
         return redirect()->route('admin.student-management.index');
     }
@@ -75,9 +89,11 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
+        $class = Kelas::all();
         $student = Student::find($id);
         return view('admin.student.edit',[
             'student' => $student,
+            'classes' => $class,
             ]);
     }
 
@@ -91,7 +107,10 @@ class StudentController extends Controller
     public function update(StudentUpdate $request, $id)
     {
         $student = Student::find($id);
-        $student->name = $request->name;
+        $student->user->name = $request->name;
+        $student->user->password = $request->password;
+        $student->gender = $request->gender;
+        $student->class_id = $request->class;
         $student->save();
         return redirect()->route('admin.student-management.index');
     }
@@ -104,7 +123,8 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        $student = Student::find($id)->delete();
+        $student_id = Student::find($id)->user->id;
+        $student = User::find($student_id)->delete();
         return redirect()->route('admin.student-management.index');
     }   
 }

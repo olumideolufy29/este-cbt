@@ -26,7 +26,6 @@ class StudentManagement extends Request
         return [
             'name' => 'required|max:255',
             'no_induk' => 'required|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
             'gender' => 'required|in:Laki-laki,Perempuan',
             'class' => 'required|max:255',
 
