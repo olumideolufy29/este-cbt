@@ -55,7 +55,7 @@ class TeacherController extends Controller
         $user->name = $request->name;
         $user->no_induk = $request->no_induk;
         $user->password = bcrypt('guru123');
-        $user->role = 'student';
+        $user->role = 'teacher';
         $user->save();
         $user = User::where('no_induk', $request->no_induk)->first();
 

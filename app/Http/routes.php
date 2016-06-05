@@ -30,21 +30,23 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 });
 
 
-    /**
-     * TEACHER
-     */
-    Route::group(['prefix' => 'teacher', 'middleware' => 'teacher'], function () {
-        Route::get('/','TeacherController@index');
-        Route::post('submitexam','TeacherController@storeExam');
-        Route::get('submitexam/{id}','TeacherController@makeExam');
-        Route::post('submitexam/{id}','TeacherController@storeExamItem');
+/**
+ * TEACHER
+ */
+Route::group(['prefix' => 'teacher', 'middleware' => 'teacher'], function () {
+    // Route::get('/','TeacherController@index');
+    // Route::post('submitexam','TeacherController@storeExam');
+    // Route::get('submitexam/{id}','TeacherController@makeExam');
+    // Route::post('submitexam/{id}','TeacherController@storeExamItem');
 
-        Route::get('result/{id}','TeacherController@result');
-        Route::get('/dashboard', function () {
-            return view('teacher.index');
-        });
-        Route::resource('test-management', 'Make\TestController');
+    // Route::get('result/{id}','TeacherController@result');
+    Route::any('/', function () {
+        return view('teacher.index');
     });
+
+    Route::resource('test-management', 'Make\TestController');
+    Route::resource('question-management', 'Make\QuestionsController');
+});
 
 /**
  * STUDENT
@@ -54,21 +56,6 @@ Route::group(['prefix' => 'student', 'middleware' => 'student'], function () {
     Route::any('/', function () {
         return view('student.index');
     });
-});
-
-/**
- * TEACHER
- */
-Route::group(['prefix' => 'teacher', 'middleware' => 'teacher'], function () {
-    Route::get('/','TeacherController@index');
-    Route::post('submitexam','TeacherController@storeExam');
-    Route::get('submitexam/{id}','TeacherController@makeExam');
-
-    Route::get('result/{id}','TeacherController@result');
-    Route::get('/dashboard', function () {
-        return view('teacher.index');
-    });
-    Route::resource('test-management', 'Make\TestController');
 });
 
 

@@ -45,7 +45,8 @@ class TeacherController extends Controller
       $exams->user_id = \Auth::user()->id;
       $exams->save();
 
-      return redirect('/teacher/submitexam/'.$exams->id);
+      //return redirect('/teacher/submitexam/'.$exams->id);
+      return redirect()->route('teacher.test-management');
     }
 
     public function makeExam($id)
