@@ -134,6 +134,7 @@ class QuestionsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $questions = \Eoola\Question::where('test_id',$id)->delete();
+        return redirect()->route('teacher.test-management.index');
     }
 }

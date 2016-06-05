@@ -51,8 +51,15 @@ Daftar Ujian
             <td>{{ $test->duration }}</td>
             <td>{{ $test->type }}</td>
             <td>{{ $test->subject->name}}</td>
-            <td>                    
-              <a href="{{ url('/teacher/question-management/'.$test->id.'/edit') }}" class="btn btn-default"><i class="glyphicon glyphicon-pencil"></i></a>
+            <td align="center">            
+              <form action="{{ url('teacher/question-management/'.$test->id) }}" method="POST">
+                  {!! csrf_field() !!}
+                  {!! method_field('DELETE') !!}
+                    <a href="{{ url('/teacher/question-management/'.$test->id.'/edit') }}" class="btn btn-default"><i class="glyphicon glyphicon-pencil"></i></a>
+                  <button type="submit" class="btn btn-danger">
+                      <i class="glyphicon glyphicon-trash"></i>
+                  </button>
+              </form>        
             </td>
             </tr>
             @endforeach
