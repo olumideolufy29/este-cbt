@@ -30,6 +30,7 @@ Daftar Ujian
               <th>Duration</th>
               <th>Type</th>
               <th>Subject</th>
+              <th>Soal</th>
           </tr> 
           </thead>
           <tbody>
@@ -50,6 +51,9 @@ Daftar Ujian
             <td>{{ $test->duration }}</td>
             <td>{{ $test->type }}</td>
             <td>{{ $test->subject->name}}</td>
+            <td>                    
+              <a href="{{ url('/teacher/question-management/'.$test->id.'/edit') }}" class="btn btn-default"><i class="glyphicon glyphicon-pencil"></i></a>
+            </td>
             </tr>
             @endforeach
                     </tbody>

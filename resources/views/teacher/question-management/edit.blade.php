@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>
-        Buat Soal Ujian
+        Edit Soal Ujian
     </title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ URL::asset('exams/css/bootstrap.min.css') }}" />
@@ -111,35 +111,35 @@
                                                     <label>
                                                         A.
                                                         <input name="key[{{{$i}}}]" value="a" type="radio" required> 
-                                                        <input name="jawaban[{{{$i}}}][] type="text" class="form-control" placeholder="Text input" required>
+                                                        <input name="jawaban[{{{$i}}}][]" type="text" class="form-control" placeholder="Text input" required>
                                                     </label>
                                                 </div>
                                                 <div class="radio form-inline">
                                                     <label>
                                                         B.
                                                         <input name="key[{{{$i}}}]" value="b" type="radio"> 
-                                                        <input name="jawaban[{{{$i}}}][] type="text" class="form-control" placeholder="Text input" required>
+                                                        <input name="jawaban[{{{$i}}}][]" type="text" class="form-control" placeholder="Text input" required>
                                                     </label>
                                                 </div>
                                                 <div class="radio form-inline">
                                                     <label>
                                                         C.
                                                         <input name="key[{{{$i}}}]" value="c" type="radio">
-                                                        <input name="jawaban[{{{$i}}}][] type="text" class="form-control" placeholder="Text input" required>
+                                                        <input name="jawaban[{{{$i}}}][]" type="text" class="form-control" placeholder="Text input" required>
                                                     </label>
                                                 </div>
                                                 <div class="radio form-inline">
                                                     <label>
                                                         D.
                                                         <input name="key[{{{$i}}}]" value="d" type="radio">
-                                                        <input name="jawaban[{{{$i}}}][] type="text" class="form-control" placeholder="Text input" required>
+                                                        <input name="jawaban[{{{$i}}}][]" type="text" class="form-control" placeholder="Text input" required>
                                                     </label>
                                                 </div>
                                                 <div class="radio form-inline">
                                                     <label>
                                                         E.
                                                         <input name="key[{{{$i}}}]" value="e" type="radio">
-                                                        <input name="jawaban[{{{$i}}}][] type="text" class="form-control" placeholder="Text input" required>
+                                                        <input name="jawaban[{{{$i}}}][]" type="text" class="form-control" placeholder="Text input" required>
                                                     </label>
                                                 </div>
                                             </div>
@@ -249,11 +249,12 @@
 
 
             jmlDone = $('#navigasi-soal .done').length;
-            progressPercent = (jmlDone / jmlSoal) * 100;
+            progressPercent = (jmlDone / flkty.cells.length) * 100;
             if (progressPercent == 100) {
                 selesai();
             };
-            $(".progress-bar").css("width", progressPercent + "%").html(jmlDone + "<small>/" + jmlSoal + "</small>");
+            $(".progress-bar").css("width", progressPercent + "%").html(jmlDone + "<small>/" + flkty.cells.length + "</small>");
+
             $(".selesai").hide();
             $gallery.show();
         }
@@ -296,25 +297,60 @@
             updateSoal();
         })
 
+        var validation = function() {
+            console.log("auoo");
+            for (var i = 1; i <= flkty.cells.length; i++) {
+
+                soal = $('#textarea'+i).val();
+                key = $("input[name='key["+i+"]']").is(':checked');
+                //key = $("#soal"+i).find('input[type="radio"]:checked').length > 0;
+
+                jawaban = $('input[name="jawaban['+i+'][]"]').each(function(){
+                    var value = $(this).val();
+                    x = true;
+                    if(!value){
+                        x = false;
+                        return false;
+                    }
+                    return x;
+                });
+
+                if (!soal) {
+                    console.log('no soal for '+i);
+                    slideTo(i-1);
+                    break;
+                }
+                else if (!key) {
+                    console.log('no key for '+i);
+                    slideTo(i-1);
+                    break;
+                }
+                else if(!x) {
+                    console.log('no jawaban for '+i+x);
+                    slideTo(i-1);
+                    break;
+                }
+
+
+            }
+        }
+
         $('#selesai').on('click', function() {
             $gallery.hide();
             $(".selesai").show();
             $('#id_current').html('fin');
             $('#navigasi-soal a').removeClass('selected');
+            validation();
         });
-
 
         var indexsidebar = $('#navigasi-soal');
         var contentexam = $('.soal.row:not(.selesai)');
         var add_button      = $('.add_exam_button');
-        var last = flkty.cells.length;
-        var x = last;
-
        
         $(add_button).click(function(e){
             e.preventDefault();
-            x++;
-            var content = '<div class="soal row"><div class="col-sm-12"><div class="container"><div class="form-group">Soal '+x+'<textarea name="soal['+x+']" id="textarea1" class="form-control" rows="3" required></textarea></div><div class="form-group" id="soal'+x+'"><div class="radio form-inline"><label>A.<input name="key['+x+']" value="a" type="radio" required> <span class="circle"></span><span class="check"></span><input name="jawaban['+x+'][] type="text" class="form-control" placeholder="Text input" required></label></div><div class="radio form-inline"><label>B.<input name="key['+x+']" value="b" type="radio"> <span class="circle"></span><span class="check"></span><input name="jawaban['+x+'][] type="text" class="form-control" placeholder="Text input" required></label></div><div class="radio form-inline"><label>C.<input name="key['+x+']" value="c" type="radio"><span class="circle"></span><span class="check"></span><input name="jawaban['+x+'][] type="text" class="form-control" placeholder="Text input" required></label></div><div class="radio form-inline"><label>D.<input name="key['+x+']" value="d" type="radio"><span class="circle"></span><span class="check"></span><input name="jawaban['+x+'][] type="text" class="form-control" placeholder="Text input" required></label></div><div class="radio form-inline"><label>E.<input name="key['+x+']" value="e" type="radio"><span class="circle"></span><span class="check"></span><input name="jawaban['+x+'][] type="text" class="form-control" placeholder="Text input" required></label></div></div></div></div></div>';
+            x = flkty.cells.length +1;
+            var content = '<div class="soal row"><div class="col-sm-12"><div class="container"><div class="form-group">Soal '+x+'<textarea name="soal['+x+']" id="textarea'+x+'" class="form-control" rows="3" required></textarea></div><div class="form-group" id="soal'+x+'"><div class="radio form-inline"><label>A.<input name="key['+x+']" value="a" type="radio" required> <span class="circle"></span><span class="check"></span><input name="jawaban['+x+'][]" type="text" class="form-control" placeholder="Text input" required></label></div><div class="radio form-inline"><label>B.<input name="key['+x+']" value="b" type="radio"> <span class="circle"></span><span class="check"></span><input name="jawaban['+x+'][]" type="text" class="form-control" placeholder="Text input" required></label></div><div class="radio form-inline"><label>C.<input name="key['+x+']" value="c" type="radio"><span class="circle"></span><span class="check"></span><input name="jawaban['+x+'][]" type="text" class="form-control" placeholder="Text input" required></label></div><div class="radio form-inline"><label>D.<input name="key['+x+']" value="d" type="radio"><span class="circle"></span><span class="check"></span><input name="jawaban['+x+'][]" type="text" class="form-control" placeholder="Text input" required></label></div><div class="radio form-inline"><label>E.<input name="key['+x+']" value="e" type="radio"><span class="circle"></span><span class="check"></span><input name="jawaban['+x+'][]" type="text" class="form-control" placeholder="Text input" required></label></div></div></div></div></div>';
 
             $(indexsidebar).append('<a title="" class="btn btn-fab">'+x+'</a>');
 
