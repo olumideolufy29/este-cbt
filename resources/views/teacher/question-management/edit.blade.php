@@ -279,7 +279,7 @@
             autoPlay: false,
             wrapAround: false,
             setGallerySize: true,
-            draggable: true,
+            draggable: false,
             prevNextButtons: true,
             cellSelector: ".soal",
             pageDots: false
