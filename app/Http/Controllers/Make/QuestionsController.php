@@ -93,15 +93,20 @@ class QuestionsController extends Controller
           ->with('key',$request->key)
           ->with('jawaban',$request->jawaban);
       }
-      foreach ($request->soal as $id => $value) {
-        $soal = $value;
-        $a = $request->jawaban[$id][0];
-        $b = $request->jawaban[$id][1];
-        $c = $request->jawaban[$id][2];
-        $d = $request->jawaban[$id][3];
-        $e = $request->jawaban[$id][4];
 
-        $jawaban = $request->key[$id];
+      if (\Eoola\Question::where('test_id',$id)->count() > 0) {
+        $questions = \Eoola\Question::where('test_id',$id)->delete();
+      }
+
+      foreach ($request->soal as $key => $value) {
+        $soal = $value;
+        $a = $request->jawaban[$key][0];
+        $b = $request->jawaban[$key][1];
+        $c = $request->jawaban[$key][2];
+        $d = $request->jawaban[$key][3];
+        $e = $request->jawaban[$key][4];
+
+        $jawaban = $request->key[$key];
 
         $question = new \Eoola\Question;
         $question->type = 'text';
@@ -116,6 +121,9 @@ class QuestionsController extends Controller
         $question->difficulty = "GODLIKE";
         $question->save();
       }
+      
+      return redirect()->route('teacher.test-management.index');
+
     }
 
     /**

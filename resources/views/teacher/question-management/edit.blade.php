@@ -65,15 +65,24 @@
 
                         </div>
                     </div>
+
                     <div class="panel-body">
                         <div class="row" id="navigasi-soal">
                             <!-- show index exams -->
                             {{--*/ $i = 1 /*--}}
-                            <a title="" class="btn btn-fab">
-                                {{{$i}}}
-                            </a>
-
-                            <!-- show index exams -->
+                            @if ($exam->questions->count() > 0)
+                                @foreach ($exam->questions as $question)
+                                    <a title="" class="btn btn-fab">
+                                        {{{$i}}}
+                                    </a>
+                                    {{--*/ $i++ /*--}}
+                                @endforeach
+                            @else
+                                <a title="" class="btn btn-fab">
+                                    {{{$i}}}
+                                </a>
+                            @endif
+                            <!-- end show index exams -->
                         </div>
                     </div>
                     <div class="panel-footer">
@@ -95,16 +104,74 @@
             <div id="main">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <form action="" method="POST" class="form-horizontal" role="form">
+                        <form action="{{ action('Make\QuestionsController@update', $exam->id) }}" method="POST" class="form-horizontal" role="form">
                         {!! csrf_field() !!}
+                        {!! method_field('PUT') !!}
+
+                        @include('common.errors')
+
                             <div id="soal">
                                 <!-- show exams -->
+                            @if ($exam->questions->count() > 0)
+                                {{--*/ $i = 1 /*--}}
+                                @foreach ($exam->questions as $question)
+                                    <div class="soal row">
+                                        <div class="col-sm-12">
+                                            <div class="container">
+                                                <div class="form-group">
+                                                Soal {{{$i}}}
+                                                  <textarea name="soal[{{{$i}}}]" id="textarea{{{$i}}}" class="form-control" rows="3" required>{{ $question->question }}</textarea>
+                                                </div>
+                                                <div class="form-group" id="soal{{{$i}}}">
+                                                    <div class="radio form-inline">
+                                                        <label>
+                                                            A.
+                                                            <input name="key[{{{$i}}}]" value="a" type="radio" {{$question->correct_answer=='a' ? 'checked' : ''}} required> 
+                                                            <input name="jawaban[{{{$i}}}][]" type="text" class="form-control" placeholder="Text input" value="{{ $question->a }}" required>
+                                                        </label>
+                                                    </div>
+                                                    <div class="radio form-inline">
+                                                        <label>
+                                                            B.
+                                                            <input name="key[{{{$i}}}]" value="b" type="radio" {{$question->correct_answer=='b' ? 'checked' : ''}} > 
+                                                            <input name="jawaban[{{{$i}}}][]" type="text" class="form-control" placeholder="Text input" value="{{ $question->b }}" required>
+                                                        </label>
+                                                    </div>
+                                                    <div class="radio form-inline">
+                                                        <label>
+                                                            C.
+                                                            <input name="key[{{{$i}}}]" value="c" type="radio" {{$question->correct_answer=='c' ? 'checked' : ''}} >
+                                                            <input name="jawaban[{{{$i}}}][]" type="text" class="form-control" placeholder="Text input" value="{{ $question->c }}" required>
+                                                        </label>
+                                                    </div>
+                                                    <div class="radio form-inline">
+                                                        <label>
+                                                            D.
+                                                            <input name="key[{{{$i}}}]" value="d" type="radio" {{$question->correct_answer=='d' ? 'checked' : ''}} >
+                                                            <input name="jawaban[{{{$i}}}][]" type="text" class="form-control" placeholder="Text input" value="{{ $question->d }}" required>
+                                                        </label>
+                                                    </div>
+                                                    <div class="radio form-inline">
+                                                        <label>
+                                                            E.
+                                                            <input name="key[{{{$i}}}]" value="e" type="radio" {{$question->correct_answer=='e' ? 'checked' : ''}} >
+                                                            <input name="jawaban[{{{$i}}}][]" type="text" class="form-control" placeholder="Text input" value="{{ $question->e }}" required>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{--*/ $i++ /*--}}
+                                @endforeach
+                            @else
+                                {{--*/ $i = 1 /*--}}
                                 <div class="soal row">
                                     <div class="col-sm-12">
                                         <div class="container">
                                             <div class="form-group">
                                             Soal {{{$i}}}
-                                              <textarea name="soal[{{{$i}}}]" id="textarea1" class="form-control" rows="3" required></textarea>
+                                              <textarea name="soal[{{{$i}}}]" id="textarea{{{$i}}}" class="form-control" rows="3" required></textarea>
                                             </div>
                                             <div class="form-group" id="soal{{{$i}}}">
                                                 <div class="radio form-inline">
@@ -146,6 +213,8 @@
                                         </div>
                                     </div>
                                 </div>
+                            @endif
+                                       
                                 
                                 <!-- show exams -->
                             </div>
@@ -229,11 +298,17 @@
         }
 
         var changeDone = function(number) {
-
             if($("#soal"+number).find('input[type="radio"]:checked').length > 0){
                 $('#navigasi-soal a:nth-child(' + number + ')').addClass('done');
             }
         }
+        
+        var startup = function() {
+            for (var i = 1; i <= flkty.cells.length; i++) {
+                changeDone(i);
+            }
+        }
+        startup();
 
         var updateSoal = function() {
             changeDone(currentSoal);
@@ -318,16 +393,19 @@
                 if (!soal) {
                     console.log('no soal for '+i);
                     slideTo(i-1);
+                    alert('Harap isi soal nomor '+i);
                     break;
                 }
                 else if (!key) {
                     console.log('no key for '+i);
                     slideTo(i-1);
+                    alert('Belum ada kunci jawaban untuk soal nomor '+i);
                     break;
                 }
                 else if(!x) {
                     console.log('no jawaban for '+i+x);
                     slideTo(i-1);
+                    alert('Harap isi jawaban untuk soal nomor '+i);
                     break;
                 }
                 else {
