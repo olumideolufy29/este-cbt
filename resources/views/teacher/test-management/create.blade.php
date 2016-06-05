@@ -8,31 +8,23 @@ Dashboard Guru
 <h1 class="text-center" style="color: #343C47; font-weight: bold;">INFORMASI TEST
 <br><small style="color: #343C47;">(Isikan kolom berikut dengan benar)</small></h1><br>
 
-<form id="productForm" action="submitexam" method="post" class="form-horizontal">
+<form id="productForm" action="{{ action('Make\TestController@store') }}" method="post" class="form-horizontal">
 
 
-    @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+    @include('common.errors')
 
     {!! csrf_field() !!}
     <div class="form-group">
         <label class="col-xs-3 control-label">Kode Test</label>
         <div class="col-xs-7">
-            <input type="text" class="form-control" name="code_test" placeholder="Kode Test Random" />
+            <input type="text" class="form-control" name="code_test" value="{{ old('code_test') }}"  placeholder="Kode Test Random" />
         </div>
     </div>
     
     <div class="form-group">
         <label class="col-xs-3 control-label">Nama Test</label>
         <div class="col-xs-7">
-            <input type="text" class="form-control" name="name_test" placeholder="Masukkan Nama Test" required />
+            <input type="text" class="form-control" name="name_test" placeholder="Masukkan Nama Test" value="{{ old('name_test') }}" required />
         </div>
     </div>
 

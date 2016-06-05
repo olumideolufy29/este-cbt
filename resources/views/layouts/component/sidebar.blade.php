@@ -37,15 +37,17 @@
                             Overview </a>
                         </li>
                         <li>
+                            <a href="{{url('teacher/test-management')}}">
+                            <i class="glyphicon glyphicon-ok"></i>
+                            Daftar Ujian </a>
+                        </li>
+                        
+                        <li>
                             <a href="#">
                             <i class="glyphicon glyphicon-user"></i>
-                            Pengaturan Akun </a>
+                            Daftar Jawaban Siswa </a>
                         </li>
-                        <li>
-                            <a href="#" target="_blank">
-                            <i class="glyphicon glyphicon-ok"></i>
-                            Riwayat Test </a>
-                        </li>
+
                         <li>
                             <a href="{{url('/credits')}}">
                             <i class="glyphicon glyphicon-flag"></i>
