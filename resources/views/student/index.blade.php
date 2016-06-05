@@ -18,8 +18,12 @@ Dashboard Siswa
 </h3>
 
 <div class="card2 card-container">
-	<form class="form-signin" method="post" action="">
-		<input type="password" name="test_code" id="inputPassword" class="form-control" placeholder="Kode Test" required>
+	<form class="form-signin" method="post" action="{{ action('Student\AnswerController@init') }}">
+    {!! csrf_field() !!}
+
+    @include('common.errors')
+
+		<input type="password" name="test_code" id="inputPassword" class="form-control" placeholder="Kode Ujian" required>
 		<button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">MULAI</button>
 	</form><!-- /form -->
 </div><!-- /card-container -->

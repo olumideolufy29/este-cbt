@@ -34,12 +34,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
  * TEACHER
  */
 Route::group(['prefix' => 'teacher', 'middleware' => 'teacher'], function () {
-    // Route::get('/','TeacherController@index');
-    // Route::post('submitexam','TeacherController@storeExam');
-    // Route::get('submitexam/{id}','TeacherController@makeExam');
-    // Route::post('submitexam/{id}','TeacherController@storeExamItem');
-
-    // Route::get('result/{id}','TeacherController@result');
     Route::any('/', function () {
         return view('teacher.index');
     });
@@ -52,10 +46,12 @@ Route::group(['prefix' => 'teacher', 'middleware' => 'teacher'], function () {
  * STUDENT
  */
 Route::group(['prefix' => 'student', 'middleware' => 'student'], function () {
-    Route::get('/ujian/{id}','StudentController@ujian');
     Route::any('/', function () {
         return view('student.index');
     });
+
+    Route::resource('answer','Student\AnswerController');
+    Route::post('answer','Student\AnswerController@init');
 });
 
 
