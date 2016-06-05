@@ -330,16 +330,18 @@
                     slideTo(i-1);
                     break;
                 }
+                else {
+                    $gallery.hide();
+                    $(".selesai").show();
+                    $('#id_current').html('fin');
+                    $('#navigasi-soal a').removeClass('selected');
+                }
 
 
             }
         }
 
         $('#selesai').on('click', function() {
-            $gallery.hide();
-            $(".selesai").show();
-            $('#id_current').html('fin');
-            $('#navigasi-soal a').removeClass('selected');
             validation();
         });
 
