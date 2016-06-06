@@ -33,6 +33,7 @@ class ChangePasswordController extends Controller
 
         $user = User::where('id', Auth::user()->id)->update([
         	'password' => bcrypt($request->password),
+            'first' => 'no',
         	]);
 
         return redirect('/');

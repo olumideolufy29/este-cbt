@@ -89,42 +89,60 @@
             <div id="main">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <form action="{{action('StudentController@submit')}}" method="POST" class="form-horizontal" role="form" id="form-ujian">
+                        <form action="{{action('StudentController@submit')}}" method="post" class="form-horizontal" role="form" id="form-ujian">
+                        {!! csrf_field() !!}
+
                             <div id="soal">
-                                @for ($i = 1; $i <= 50; $i++)
+                                <?php 
+                                $i=0;
+                                 ?>
+                                @foreach($questions as $question)
+                                <?php $i++; ?>
                                 <div class="soal row">
                                     <div class="col-sm-12">
                                         <div class="container">
-                                            Soal {{$i}}
+                                            <div class="form-group">
+                                                Soal {{$i}}<br/>
+                                                {!! $question->question !!}
+                                                <input type="hidden" name="question[{{$i}}]" value="{{$question->id}}">
+                                            </div>
                                             <div class="form-group" id="soal{{$i}}">
                                                 <div class="radio">
                                                     <label>
                                                         A.
-                                                        <input name="sample{{$i}}" value="option" type="radio"> asdasdaskdasdadadasjd askdka
+                                                        <input name="answer[{{{$i}}}]" value="a" type="radio"> 
+                                                        {!! $question->a !!}
                                                     </label>
                                                 </div>
                                                 <div class="radio">
                                                     <label>
                                                         B.
-                                                        <input name="sample{{$i}}" value="option1" type="radio"> lasdlasdj alskdj asld
+                                                        <input name="answer[{{{$i}}}]" value="b" type="radio">
+                                                        {!! $question->b !!}
+
                                                     </label>
                                                 </div>
                                                 <div class="radio">
                                                     <label>
                                                         C.
-                                                        <input name="sample{{$i}}" value="option1" type="radio"> Only when plugged in
+                                                        <input name="answer[{{{$i}}}]" value="c" type="radio">
+                                                        {!! $question->c !!}
+
                                                     </label>
                                                 </div>
                                                 <div class="radio">
                                                     <label>
                                                         D.
-                                                        <input name="sample{{$i}}" value="option1" type="radio"> Only when plugged in
+                                                        <input name="answer[{{{$i}}}]" value="d" type="radio"> 
+                                                        {!! $question->d !!}
                                                     </label>
                                                 </div>
                                                 <div class="radio">
                                                     <label>
                                                         E.
-                                                        <input name="sample{{$i}}" value="option1" type="radio"> Only when plugged in
+                                                        <input name="answer[{{{$i}}}]" value="e" type="radio"> 
+                                                        {!! $question->e !!}
+
                                                     </label>
                                                 </div>
 
@@ -132,7 +150,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                @endfor
+                                @endforeach
                             </div>
                             <div class="soal row selesai">
                                 <div class="col-sm-12 text-center">
@@ -167,14 +185,14 @@
             <div id="sidebar">
                 <div class="panel panel-default">
                     <div class="progress progress-striped active" style="height:20px">
-                        <div class="progress-bar progress-bar-success active" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width:25%">
-                            5/20
+                        <div class="progress-bar progress-bar-success active" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                            0/0
                         </div>
                     </div>
                     <div class="panel-body">
                         <div class="row" id="navigasi-soal">
 
-                            @for ($i = 1; $i <= 50; $i++)
+                            @for ($i = 1; $i <= count($questions); $i++)
                             <a title="" class="btn btn-fab">
                                 {{$i}}
                             </a>                            
@@ -298,13 +316,6 @@
             updateSoal();
         })
 
-        $('#selesai').on('click', function() {
-            $gallery.hide();
-            $(".selesai").show();
-            $('#id_current').html('fin');
-            $('#navigasi-soal a').removeClass('selected');
-        });
-
         var waktuHabis = function () {  
             $(".selesai h1").text('Waktu Sudah Habis!');
             $(".selesai p").text('Sistem akan secara otomatis submit hasil pekerjaan kamu dalam 5 detik.');
@@ -319,6 +330,13 @@
                 $('#form-ujian').submit();
             }, 5000);
         }
+
+        $('#selesai').on('click', function() {
+            $gallery.hide();
+            $(".selesai").show();
+            $('#id_current').html('fin');
+            $('#navigasi-soal a').removeClass('selected');
+        });
 
         /**
         * COUNTDOWN TIMER

@@ -12,3 +12,10 @@
         </ul>
     </div>
 @endif
+
+@if (session()->has('message'))
+    <div class="alert alert-success">
+        <strong>{{ session()->get('message') }}</strong>
+    </div>
+
+@endif
