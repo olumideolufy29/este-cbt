@@ -61,10 +61,10 @@ class QuestionsController extends Controller
     {
       $check = \Eoola\Test::where('id',$id)->first();
       if ($check == null) {
-        return redirect()->route('teacher.test-management.create')->withErrors(['msg' => 'kode ujian untuk '.$code.' tidak ditemukan']);
+        return redirect()->route('test-management.create')->withErrors(['msg' => 'kode ujian untuk '.$code.' tidak ditemukan']);
       }
 
-      return view('teacher.question-management.edit',['exam' => $check]);
+      return view('admin-teacher.question-management.edit',['exam' => $check]);
     }
 
     /**
@@ -118,11 +118,10 @@ class QuestionsController extends Controller
         $question->d = $d;
         $question->e = $e;
         $question->correct_answer = $jawaban; 
-        $question->difficulty = "GODLIKE";
         $question->save();
       }
       
-      return redirect()->route('teacher.test-management.index');
+      return redirect()->route('test-management.index');
 
     }
 
@@ -135,6 +134,6 @@ class QuestionsController extends Controller
     public function destroy($id)
     {
         $questions = \Eoola\Question::where('test_id',$id)->delete();
-        return redirect()->route('teacher.test-management.index');
+        return redirect()->route('test-management.index');
     }
 }

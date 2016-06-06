@@ -28,8 +28,11 @@ Daftar Ujian
               <th>Name</th>
               <th>Code</th>
               <th>Duration</th>
-              <th>Type</th>
+<!--               <th>Type</th> -->
               <th>Subject</th>
+              @if(auth()->user()->role == "admin")
+              <th>Created By</th>
+              @endif
               <th>Soal</th>
           </tr> 
           </thead>
@@ -37,10 +40,10 @@ Daftar Ujian
             @foreach($tests as $test)
             <tr>
             <td align="center">
-              <form action="{{ url('teacher/test-management/'.$test->id) }}" method="POST">
+              <form action="{{ url('/test-management/'.$test->id) }}" method="POST">
                   {!! csrf_field() !!}
                   {!! method_field('DELETE') !!}
-                    <a href="{{ url('/teacher/test-management/'.$test->id.'/edit') }}" class="btn btn-default"><i class="glyphicon glyphicon-pencil"></i></a>
+                    <a href="{{ url('/test-management/'.$test->id.'/edit') }}" class="btn btn-default"><i class="glyphicon glyphicon-pencil"></i></a>
                   <button type="submit" class="btn btn-danger">
                       <i class="glyphicon glyphicon-trash"></i>
                   </button>
@@ -48,17 +51,24 @@ Daftar Ujian
             </td>
             <td>{{ $test->name }}</td>
             <td>{{ $test->code }}</td>
-            <td>{{ $test->duration }}</td>
-            <td>{{ $test->type }}</td>
+            <td>{{ $test->duration }} menit<br/>
+                {{ $test->questions->count() }} soal
+            </td>
+<!--             <td>{{ $test->type }}</td> -->
             <td>{{ $test->subject->name}}</td>
+            @if(auth()->user()->role == "admin")
+            <td>{{$test->created_by->name}}</td>
+            @endif
             <td align="center">            
-              <form action="{{ url('teacher/question-management/'.$test->id) }}" method="POST">
+              <form action="{{ url('/question-management/'.$test->id) }}" method="POST">
                   {!! csrf_field() !!}
                   {!! method_field('DELETE') !!}
-                    <a href="{{ url('/teacher/question-management/'.$test->id.'/edit') }}" class="btn btn-default"><i class="glyphicon glyphicon-pencil"></i></a>
-                  <button type="submit" class="btn btn-danger">
-                      <i class="glyphicon glyphicon-trash"></i>
-                  </button>
+                    <a href="{{ url('/question-management/'.$test->id.'/edit') }}" class="btn btn-default"><i class="glyphicon glyphicon-pencil"></i> Edit Soal</a>
+<!-- 
+                                    <button type="submit" class="btn btn-danger">
+                                        <i class="glyphicon glyphicon-trash"></i>
+                                    </button>
+                   -->                  
               </form>        
             </td>
             </tr>

@@ -10,6 +10,7 @@ use Eoola\Http\Controllers\Controller;
 use Eoola\User;
 
 use Auth;
+use Validator;
 
 class FirstLoginController extends Controller
 {
@@ -32,7 +33,10 @@ class FirstLoginController extends Controller
 
         $user = User::where('id', Auth::user()->id)->update([
         	'password' => bcrypt($request->password),
+            'first' => 'no',
         	]);
+
+        return redirect('/');
     }
 
     public function getSkip()

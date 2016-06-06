@@ -10,6 +10,7 @@ use Eoola\Http\Controllers\Controller;
 use Eoola\User;
 
 use Auth;
+use Validator;
 
 class ChangePasswordController extends Controller
 {
@@ -33,6 +34,8 @@ class ChangePasswordController extends Controller
         $user = User::where('id', Auth::user()->id)->update([
         	'password' => bcrypt($request->password),
         	]);
+
+        return redirect('/');
     }
 
 }

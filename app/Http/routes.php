@@ -43,9 +43,6 @@ Route::group(['prefix' => 'teacher', 'middleware' => 'teacher'], function () {
     Route::any('/', function () {
         return view('teacher.index');
     });
-
-    Route::resource('test-management', 'Make\TestController');
-    Route::resource('question-management', 'Make\QuestionsController');
 });
 
 /**
@@ -56,6 +53,14 @@ Route::group(['prefix' => 'student', 'middleware' => 'student'], function () {
     Route::any('/', function () {
         return view('student.index');
     });
+});
+
+/**
+ * TEACHER & ADMIN 
+ */
+Route::group(['middleware' => 'adminguru'], function () {
+    Route::resource('test-management', 'Make\TestController');
+    Route::resource('question-management', 'Make\QuestionsController');
 });
 
 

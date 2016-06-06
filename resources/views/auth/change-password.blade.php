@@ -24,7 +24,9 @@
     <br><small style="color: #343C47;"></small></h3>
    <div class="container">
         <div class="card2 card-container">
-            <form class="form-signin">
+            <form class="form-signin" method="post">
+                        {!! csrf_field() !!}
+                
                 <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                     <div class="col-md-12">
                         <input type="password" id="inputEmail" class="form-control" name="password" placeholder="Masukkan Password Baru">

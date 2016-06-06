@@ -46,6 +46,7 @@ class Kernel extends HttpKernel
     protected $routeMiddleware = [
         'auth' => \Eoola\Http\Middleware\Authenticate::class,
         'admin' => \Eoola\Http\Middleware\Admin::class,
+        'adminguru' => \Eoola\Http\Middleware\AdminGuru::class,
         'student' => \Eoola\Http\Middleware\Student::class,
         'teacher' => \Eoola\Http\Middleware\Teacher::class,
         'first-login' => \Eoola\Http\Middleware\FirstLogin::class,

@@ -1,7 +1,8 @@
                 <!-- SIDEBAR USERPIC -->
                 <div class="profile-userpic">
+
                     @if(auth()->user()->role == "teacher")
-                    <img src="{{ asset('assets/image/person-girl-flat.png') }}" class="img-responsive" alt="">
+                    <img src="{{ asset('assets/image/admin-flat.png') }}" class="img-responsive" alt="">
                     @elseif(auth()->user()->role == "admin")
                     <img src="{{ asset('assets/image/admin-flat.png') }}" class="img-responsive" alt="">
                     @elseif(auth()->user()->role == "student")
@@ -37,7 +38,7 @@
                             Overview </a>
                         </li>
                         <li>
-                            <a href="{{url('teacher/test-management')}}">
+                            <a href="{{url('/test-management')}}">
                             <i class="glyphicon glyphicon-ok"></i>
                             Daftar Ujian </a>
                         </li>
@@ -83,9 +84,9 @@
                         </li>
 
                         <li>
-                            <a href="{{url('admin/test-management')}}">
+                            <a href="{{url('/test-management')}}">
                             <i class="glyphicon glyphicon-ok"></i>
-                            Riwayat Test </a>
+                            Manajemen Ujian </a>
                         </li>
                         <li>
                             <a href="{{url('/credits')}}">

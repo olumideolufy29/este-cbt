@@ -8,6 +8,7 @@ use Eoola\Http\Requests;
 use Eoola\Http\Controllers\Controller;
 
 use Eoola\Test;
+use Eoola\Subject;
 
 class TestController extends Controller
 {
@@ -19,7 +20,7 @@ class TestController extends Controller
     public function index()
     {
         $tests = Test::paginate(20);
-        return view('teacher.test-management.index',[
+        return view('admin-teacher.test-management.index',[
             'tests' => $tests,
             ]);
     }
@@ -31,7 +32,13 @@ class TestController extends Controller
      */
     public function create()
     {
-        return view('teacher.test-management.create');
+        $subject = array();
+        if (auth()->user()->role == 'admin') {
+            $subject = Subject::all();
+        }
+        return view('admin-teacher.test-management.create',[
+            'subjects' => $subject,
+            ]);
     }
 
     /**
@@ -43,7 +50,7 @@ class TestController extends Controller
     public function store(Request $request)
     {
       $field = [
-        'code_test' => 'required',
+        'code' => 'required|unique:tests',
         'name_test' => 'required',
         'subject' => 'required|integer',
         'type' => 'required',
@@ -54,19 +61,19 @@ class TestController extends Controller
 
       if ($validator->fails()) 
       {
-        return redirect()->route('teacher.test-management.create')->withErrors($validator)->withInput();
+        return redirect()->route('test-management.create')->withErrors($validator)->withInput();
       }
 
       $exams = new \Eoola\Test;
       $exams->name = $request->name_test;
-      $exams->code = $request->code_test;
+      $exams->code = $request->code;
       $exams->duration = $request->duration;
       $exams->type = $request->type;
       $exams->subject_id = $request->subject;
       $exams->user_id = \Auth::user()->id;
       $exams->save();
 
-      return redirect()->route('teacher.question-management.edit',['id' => $exams->id]);
+      return redirect()->route('question-management.edit',['id' => $exams->id]);
     }
 
     /**
@@ -88,9 +95,14 @@ class TestController extends Controller
      */
     public function edit($id)
     {
+        $subject = array();
+        if (auth()->user()->role == 'admin') {
+            $subject = Subject::all();
+        }
         $test = Test::find($id);
-        return view('teacher.test-management.edit',[
-            'test' => $test
+        return view('admin-teacher.test-management.edit',[
+            'test' => $test,
+            'subjects' => $subject,
             ]);
     }
 
@@ -103,18 +115,30 @@ class TestController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $field = [
+        'name_test' => 'required',
+        'subject' => 'required|integer',
+        'type' => 'required',
+        'duration' => 'required',
+      ];
+
+      $validator = \Validator::make($request->all(),$field);
+
+      if ($validator->fails()) 
+      {
+        return redirect()->route('test-management.create')->withErrors($validator)->withInput();
+      }
         $test = Test::find($id);
         $test->name = $request->name_test;
-        $test->code = $request->code_test;
         $test->duration = $request->duration;
         $test->type = $request->type;
         $test->subject_id = $request->subject;
         $test->save();
-        return redirect()->route('teacher.test-management.index');
+        return redirect()->route('test-management.index');
     }
 
     /**
-     * Remove the specified resource from storage.
+     *  the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -122,6 +146,6 @@ class TestController extends Controller
     public function destroy($id)
     {
         $test = Test::find($id)->delete();
-        return redirect()->route('teacher.test-management.index');
+        return redirect()->route('test-management.index');
     }
 }
