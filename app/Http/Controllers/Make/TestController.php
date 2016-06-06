@@ -19,7 +19,11 @@ class TestController extends Controller
      */
     public function index()
     {
-        $tests = Test::paginate(20);
+        if (auth()->user()->role == "admin") {
+            $tests = Test::paginate(20);
+        } else {
+            $tests = Test::where('user_id',auth()->user()->id)->paginate(20);
+        }
         return view('admin-teacher.test-management.index',[
             'tests' => $tests,
             ]);
