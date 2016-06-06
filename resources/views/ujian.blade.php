@@ -67,7 +67,9 @@
                     <li>
                         <a href="#" title="" class="orange white-text">
                             Waktu Tersisa
-                            <b style="font-size:1.2em">20:12</b>
+                            <b style="font-size:1.2em" id="clock">
+                                <span class="minutes"></span>:<span class="seconds"></span>
+                            </b>
                         </a>
                     </li>
                 </ul>
@@ -87,7 +89,7 @@
             <div id="main">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <form action="" method="POST" class="form-horizontal" role="form">
+                        <form action="{{action('StudentController@submit')}}" method="POST" class="form-horizontal" role="form" id="form-ujian">
                             <div id="soal">
                                 @for ($i = 1; $i <= 50; $i++)
                                 <div class="soal row">
@@ -303,8 +305,65 @@
             $('#navigasi-soal a').removeClass('selected');
         });
 
+        var waktuHabis = function () {  
+            $(".selesai h1").text('Waktu Sudah Habis!');
+            $(".selesai p").text('Sistem akan secara otomatis submit hasil pekerjaan kamu dalam 5 detik.');
+            $(".selesai button").hide();
+            $(".selesai").show();
 
+            $gallery.hide();
+            $gallery = null;
+            $('#id_current').html('fin');
+            $('#navigasi-soal a').removeClass('selected');
+            setTimeout(function () {
+                $('#form-ujian').submit();
+            }, 5000);
+        }
 
+        /**
+        * COUNTDOWN TIMER
+        *
+        */
+        function getTimeRemaining(endtime) {
+          var t = Date.parse(endtime) - Date.parse(new Date());
+          var seconds = Math.floor((t / 1000) % 60);
+          var minutes = Math.floor((t / 1000 / 60) % 60);
+          var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+          var days = Math.floor(t / (1000 * 60 * 60 * 24));
+          return {
+            'total': t,
+            'days': days,
+            'hours': hours,
+            'minutes': minutes,
+            'seconds': seconds
+          };
+        }
+
+        function initializeClock(id, endtime) {
+          var clock = document.getElementById(id);
+          var minutesSpan = clock.querySelector('.minutes');
+          var secondsSpan = clock.querySelector('.seconds');
+
+          function updateClock() {
+            var t = getTimeRemaining(endtime);
+
+            minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+            secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+            if (t.total <= 0) {
+                clearInterval(timeinterval);
+                waktuHabis();
+            } else if(t.total == 5 * 60 *  1000) {
+                $gallery.prepend('Waktu tinggal 5 menit lagi. Segera periksa pekerjaan kamu. Sistem akan secara otomatis mengumpulkan pekerjaanmu setelah waktu habis.');
+            }
+          }
+
+          updateClock();
+          var timeinterval = setInterval(updateClock, 1000);
+        }
+
+        var deadline = new Date(Date.parse(new Date()) + {{ $test->duration }} * 60 * 1000);
+        initializeClock('clock', deadline);
     });
     </script>
 </body>

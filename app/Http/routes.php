@@ -51,6 +51,7 @@ Route::group(['prefix' => 'teacher', 'middleware' => 'teacher'], function () {
 Route::group(['prefix' => 'student', 'middleware' => 'student'], function () {
 //    Route::get('/ujian/{id}','StudentController@ujian');
     Route::post('/ujian','StudentController@masuk');
+    Route::post('/selesai','StudentController@submit');
     Route::any('/', 'StudentController@index');
 });
 

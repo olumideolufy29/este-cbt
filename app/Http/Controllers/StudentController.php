@@ -44,9 +44,11 @@ class StudentController extends Controller
     {
     	session()->set('ujianberlangsung',true);
     	session()->set('test-id', $id);
-    	$questions = Test::find($id)->questions->all();
+    	$test = Test::find($id);
+    	$questions = $test->questions->all();
 		return view('ujian',[
 			'questions' => $questions,
+			'test' => $test,
 			]);
     }
 }
