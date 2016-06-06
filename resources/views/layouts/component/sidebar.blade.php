@@ -33,22 +33,17 @@
                     @if(auth()->user()->role == "teacher")
                     <ul class="nav">
                         <li>
-                            <a href="{{url('/teacher')}}">
-                            <i class="glyphicon glyphicon-home"></i>
-                            Overview </a>
-                        </li>
-                        <li>
                             <a href="{{url('/test-management')}}">
                             <i class="glyphicon glyphicon-ok"></i>
                             Daftar Ujian </a>
                         </li>
                         
-                        <li>
-                            <a href="#">
-                            <i class="glyphicon glyphicon-user"></i>
-                            Daftar Jawaban Siswa </a>
-                        </li>
-
+<!--                         <li>
+    <a href="#">
+    <i class="glyphicon glyphicon-user"></i>
+    Daftar Jawaban Siswa </a>
+</li>
+ -->
                         <li>
                             <a href="{{url('/credits')}}">
                             <i class="glyphicon glyphicon-flag"></i>
@@ -58,10 +53,11 @@
                     @elseif(auth()->user()->role == "admin")
                     <ul class="nav">
                         <li>
-                            <a href="{{url('/admin')}}">
-                            <i class="glyphicon glyphicon-home"></i>
-                            Overview </a>
+                            <a href="{{url('/test-management')}}">
+                            <i class="glyphicon glyphicon-ok"></i>
+                            Manajemen Ujian </a>
                         </li>
+
                         <li>
                             <a href="{{url('admin/teacher-management')}}">
                             <i class="glyphicon glyphicon-user"></i>
@@ -83,11 +79,6 @@
                             Manajemen Kelas </a>
                         </li>
 
-                        <li>
-                            <a href="{{url('/test-management')}}">
-                            <i class="glyphicon glyphicon-ok"></i>
-                            Manajemen Ujian </a>
-                        </li>
                         <li>
                             <a href="{{url('/credits')}}">
                             <i class="glyphicon glyphicon-flag"></i>

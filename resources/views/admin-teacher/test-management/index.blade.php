@@ -64,6 +64,7 @@ Daftar Ujian
                   {!! csrf_field() !!}
                   {!! method_field('DELETE') !!}
                     <a href="{{ url('/question-management/'.$test->id.'/edit') }}" class="btn btn-default"><i class="glyphicon glyphicon-pencil"></i> Edit Soal</a>
+                    <a href="{{ url('/result/'.$test->id) }}" class="btn btn-primary"><i class="glyphicon glyphicon-eye-open"></i> Lihat Hasil</a>
 <!-- 
                                     <button type="submit" class="btn btn-danger">
                                         <i class="glyphicon glyphicon-trash"></i>

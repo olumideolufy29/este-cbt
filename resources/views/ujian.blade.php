@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>
-        Test Page
+        {{$test->name}} - 
+        {{$test->subject->name}}
     </title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ URL::asset('exams/css/bootstrap.min.css') }}" />
@@ -50,18 +51,10 @@
                 </div>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                Nama Pengguna
-                                <b class="caret">
-                                </b>
+                        <a href="#">
+                                <b>{{$test->name}}</b>
+                                {{$test->subject->name}}
                             </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="#">
-                                        Logout
-                                    </a>
-                            </li>
-                        </ul>
                     </li>
 
                     <li>
@@ -372,7 +365,8 @@
                 clearInterval(timeinterval);
                 waktuHabis();
             } else if(t.total == 5 * 60 *  1000) {
-                $gallery.prepend('Waktu tinggal 5 menit lagi. Segera periksa pekerjaan kamu. Sistem akan secara otomatis mengumpulkan pekerjaanmu setelah waktu habis.');
+
+                $gallery.prepend('<div class="alert alert-warning"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Waktu tinggal 5 menit lagi. Segera periksa pekerjaan kamu. Sistem akan secara otomatis mengumpulkan pekerjaanmu setelah waktu habis.</div>');
             }
           }
 
@@ -384,6 +378,10 @@
         initializeClock('clock', deadline);
     });
     </script>
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong>Title!</strong> Alert body ...
+    </div>
 </body>
 
 </html>

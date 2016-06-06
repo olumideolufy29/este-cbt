@@ -20,7 +20,8 @@ Route::group(['middleware' => 'auth'], function () {
  */
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::any('/', function () {
-        return view('admin.index');
+        //return view('admin.index');
+        return redirect()->route('test-management.index');
     });
     Route::resource('teacher-management', 'Admin\TeacherController');
     Route::resource('student-management', 'Admin\StudentController');
@@ -41,7 +42,9 @@ Route::group(['prefix' => 'teacher', 'middleware' => 'teacher'], function () {
 
     // Route::get('result/{id}','TeacherController@result');
     Route::any('/', function () {
-        return view('teacher.index');
+        return redirect()->route('test-management.index');
+        
+        //return view('teacher.index');
     });
 });
 
@@ -61,6 +64,7 @@ Route::group(['prefix' => 'student', 'middleware' => 'student'], function () {
 Route::group(['middleware' => 'adminguru'], function () {
     Route::resource('test-management', 'Make\TestController');
     Route::resource('question-management', 'Make\QuestionsController');
+    Route::get('result/{test_id}', 'Make\TestController@result');
 });
 
 

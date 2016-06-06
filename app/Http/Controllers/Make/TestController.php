@@ -9,6 +9,7 @@ use Eoola\Http\Controllers\Controller;
 
 use Eoola\Test;
 use Eoola\Subject;
+use Eoola\Result;
 
 class TestController extends Controller
 {
@@ -89,6 +90,16 @@ class TestController extends Controller
     public function show($id)
     {
         //
+    }
+
+    public function result($test_id)
+    {
+        $test = Test::find($test_id);
+        $results = Result::where('test_id' , $test_id)->orderBy('created_at','dsc')->paginate(20);
+        return view('admin-teacher.result',[
+            'results' => $results,
+            'test' => $test,
+            ]);
     }
 
     /**
